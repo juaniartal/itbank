@@ -20,7 +20,7 @@
     />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="main.css" />
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/icons/favicon.ico" />
     <!-- Font Awesome -->
@@ -143,16 +143,42 @@
     </header>
 
     <main>
-      <h3>Log in</h3>
-      <form action="#">
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
-        <button>Log In</button>
-        <p><a href="">Reset Your Password</a></p>
-        <p><a href="">Having Trouble Signing In?</a></p>
-      </form>
-      <h2>Benefits of ITBANK Online Banking</h2>
-      <h2>ITBANK Online Banking Features</h2>
+      <ul class="secciones">
+        <li class="li1">
+          <h2 class="main-text">
+            New ITBANK <br />
+            checking customers
+          </h2>
+          <button type="submit" class="btn btn-primary" id="btn-signup">
+            Sign Up
+          </button>
+        </li>
+        <li class="li2">
+          <div class="formulario">
+            <h1>Welcome</h1>
+            <form class="" method="post">
+              <div class="username">
+                <input
+                  type="email"
+                  id="form-user"
+                  aria-describedby="emailHelp"
+                  placeholder="Username"
+                />
+              </div>
+              <div class="password">
+                <input
+                  type="password"
+                  id="form-password"
+                  placeholder="Password"
+                />
+              </div>
+            </form>
+            <button type="submit" id="boton-sign" class="btn btn-primary">
+              Sign In
+            </button>
+          </div>
+        </li>
+      </ul>
     </main>
     <hr />
 
