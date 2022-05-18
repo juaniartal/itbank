@@ -46,6 +46,29 @@
   <body>
     <!-- Navbar -->
     <header>
+     <!--Modo Nocturno-Modo Dia -->
+      <div>
+    <button onclick="darkMode()">Darkmode</button>
+    <button onclick="lightMode()">LightMode</button>
+    
+    <!-- Script para modo nocturno-->
+    <script>                          
+      function darkMode() {
+        var element = document.body;
+        var content = document.getElementById("DarkModetext");
+        element.className = "dark-mode";
+        content.innerText = "Dark Mode is ON";
+      }
+      function lightMode() {
+        var element = document.body;
+        var content = document.getElementById("DarkModetext");
+        element.className = "light-mode";
+        content.innerText = "Dark Mode is OFF";
+      }
+    </script>
+
+
+      </div>
       <section class="container-fluid bg-light mb-0">
         <div class="py-2 d-none d-lg-block">
           <div class="col ms-5 me-2 d-inline">
