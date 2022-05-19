@@ -46,29 +46,21 @@
   <body>
     <!-- Navbar -->
     <header>
-     <!--Modo Nocturno-Modo Dia -->
-      <div>
-    <button onclick="darkMode()">Darkmode</button>
-    <button onclick="lightMode()">LightMode</button>
-    
-    <!-- Script para modo nocturno-->
-    <script>                          
-      function darkMode() {
-        var element = document.body;
-        var content = document.getElementById("DarkModetext");
-        element.className = "dark-mode";
-        content.innerText = "Dark Mode is ON";
-      }
-      function lightMode() {
-        var element = document.body;
-        var content = document.getElementById("DarkModetext");
-        element.className = "light-mode";
-        content.innerText = "Dark Mode is OFF";
-      }
-    </script>
-
-
-      </div>
+      <!-- Script para modo nocturno-->
+      <script>
+        function darkMode() {
+          var element = document.body;
+          var content = document.getElementById("DarkModetext");
+          element.className = "dark-mode";
+          content.innerText = "Dark Mode is ON";
+        }
+        function lightMode() {
+          var element = document.body;
+          var content = document.getElementById("DarkModetext");
+          element.className = "light-mode";
+          content.innerText = "Dark Mode is OFF";
+        }
+      </script>
       <section class="container-fluid bg-light mb-0">
         <div class="py-2 d-none d-lg-block">
           <div class="col ms-5 me-2 d-inline">
@@ -162,141 +154,146 @@
           </div>
           <!-- Collapsible wrapper -->
         </div>
+        <div class="container-fluid justify-content-lg-end">
+          <button class="btn btn-dark me-2" onclick="darkMode()">
+            DarkMode
+          </button>
+          <button class="btn btn-light" onclick="lightMode()">LightMode</button>
+        </div>
       </nav>
     </header>
 
     <main>
-      <ul class="secciones">
-        <li class="li1">
-          <h2 class="main-text">
-            New ITBANK <br />
-            checking customers
-          </h2>
-          <button type="submit" class="btn btn-primary" id="btn-signup">
-            Sign Up
-          </button>
-        </li>
-        <li class="li2">
-          <div class="formulario">
-            <h1>Welcome</h1>
-            <form class="" method="post">
-              <div class="username">
-                <input
-                  type="email"
-                  id="form-user"
-                  aria-describedby="emailHelp"
-                  placeholder="Username"
-                />
-              </div>
-              <div class="password">
-                <input
-                  type="password"
-                  id="form-password"
-                  placeholder="Password"
-                />
-              </div>
-            </form>
-            <button type="submit" id="boton-sign" class="btn btn-primary">
-              Sign In
+      <div class="container-fluid">
+        <ul class="secciones">
+          <li class="li1">
+            <h2 class="main-text">
+              New ITBANK <br />
+              checking customers
+            </h2>
+            <button type="submit" class="btn btn-success" id="btn-signup">
+              Sign Up
             </button>
-          </div>
-        </li>
-      </ul>
+          </li>
+          <li class="li2">
+            <div class="formulario">
+              <h1>Welcome</h1>
+              <form class="" method="post">
+                <div class="username">
+                  <input
+                    type="email"
+                    id="form-user"
+                    aria-describedby="emailHelp"
+                    placeholder="Username"
+                  />
+                </div>
+                <div class="password">
+                  <input
+                    type="password"
+                    id="form-password"
+                    placeholder="Password"
+                  />
+                </div>
+              </form>
+              <button type="submit" id="boton-sign" class="btn btn-primary">
+                Sign In
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
     </main>
     <hr />
 
-  <!--FOOTER-->
-<footer class="text-center text-lg-start bg-light text-muted">
-  <!-- Section: REDES SOCIALES -->
-  <section
-    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-  >
-    <!-- TEXTO -->
-    <div class="me-5 d-none d-lg-block">
-      <span>Conectate con nosotros a traves de:</span>
-    </div>
-    <!-- TEXTO -->
+    <!--FOOTER-->
+    <footer class="text-center text-lg-start bg-light text-muted">
+      <!-- Section: REDES SOCIALES -->
+      <section
+        class="
+          d-flex
+          justify-content-center justify-content-lg-between
+          p-4
+          border-bottom
+        "
+      >
+        <!-- TEXTO -->
+        <div class="me-5 d-none d-lg-block">
+          <span>Conectate con nosotros a traves de:</span>
+        </div>
+        <!-- TEXTO -->
 
-    <!-- ICONOS REDES SOCIALES -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-linkedin"></i>
-      </a>
-    </div>
-    <!-- FIN ICONOS REDES SOCIALES -->
-  </section>
-  <!-- Section: FIN REDES SOCIALES -->
-
-  <!-- Section: ACCESOS  -->
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-      <!-- 1° HILERA -->
-      <div class="row mt-3">
-        <!-- 1° COLUMNA -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- TEXTO -->
-          <a class="text-uppercase fw-bold mb-4">
-            MOBILE APP
+        <!-- ICONOS REDES SOCIALES -->
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-linkedin"></i>
           </a>
         </div>
-        <!-- FIN 1° COLUMNA -->
+        <!-- FIN ICONOS REDES SOCIALES -->
+      </section>
+      <!-- Section: FIN REDES SOCIALES -->
 
-        <!--2° COLUMNA -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- TEXTO -->
-          <a class="text-uppercase fw-bold mb-4">
-            COMMUNITY
-          </a>
-        </div>
-        <!-- FIN 2° COLUMNA -->
-        
+      <!-- Section: ACCESOS  -->
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <!-- 1° HILERA -->
+          <div class="row mt-3">
+            <!-- 1° COLUMNA -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- TEXTO -->
+              <a class="text-uppercase fw-bold mb-4"> MOBILE APP </a>
+            </div>
+            <!-- FIN 1° COLUMNA -->
 
-        <!--logo-->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- TEXTO -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            ITBANK
-          <h6>
-        </div>
-        <!-- FIN LOGO -->
+            <!--2° COLUMNA -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- TEXTO -->
+              <a class="text-uppercase fw-bold mb-4"> COMMUNITY </a>
+            </div>
+            <!-- FIN 2° COLUMNA -->
 
-        <!-- 4° COLUMNA -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- TEXTO -->
-          <a class="text-uppercase fw-bold mb-4">
-            COMPANY
-          </a>
-        </div>
-        <!--FIN 4° COLUMNA -->
+            <!--logo-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- TEXTO -->
+              <h6 class="text-uppercase fw-bold mb-4">ITBANK</h6>
+            </div>
+            <!-- FIN LOGO -->
 
-        <!-- 5° COLUMNA -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- TEXTO -->
-          <a class="text-uppercase fw-bold mb-4">
-            RESOURCE
-          </a>         
+            <!-- 4° COLUMNA -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- TEXTO -->
+              <a class="text-uppercase fw-bold mb-4"> COMPANY </a>
+            </div>
+            <!--FIN 4° COLUMNA -->
+
+            <!-- 5° COLUMNA -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- TEXTO -->
+              <a class="text-uppercase fw-bold mb-4"> RESOURCE </a>
+            </div>
+            <!-- FIN 5° COLUMNA -->
+          </div>
+          <!-- Grid row -->
         </div>
-        <!-- FIN 5° COLUMNA -->
+      </section>
+      <!-- Section: FIN ACCESO  -->
+
+      <!-- Copyright -->
+      <div
+        class="text-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        © 2022 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ITBANK</a>
       </div>
-      <!-- Grid row -->
-    </div>
-  </section>
-  <!-- Section: FIN ACCESO  -->
-
-  <!-- Copyright -->
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2022 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ITBANK</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!--FIN FOOTER -->
+      <!-- Copyright -->
+    </footer>
+    <!--FIN FOOTER -->
 
     <!-- MDB -->
     <script
