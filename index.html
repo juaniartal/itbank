@@ -164,7 +164,7 @@
     </header>
 
     <main>
-      <div class="container-fluid">
+      <div class="container-fluid px-0 py-0">
         <ul class="secciones">
           <li class="li1">
             <h2 class="main-text">
@@ -177,23 +177,36 @@
           </li>
           <li class="li2">
             <div class="formulario">
-              <h1>Welcome</h1>
+              <h1 class="display-5">Welcome</h1>
               <form class="" method="post">
+                <!-- Username Input -->
                 <div class="form-outline mb-2">
-                  <input type="text" id="usernameInput" class="form-control" />
+                  <input
+                    type="email"
+                    id="usernameInput"
+                    class="form-control"
+                    placeholder="your@mail.com"
+                  />
                   <label class="form-label" for="usernameInput">Username</label>
                 </div>
-                <div class="password">
+                <div class="form-outline mb-2">
                   <input
                     type="password"
-                    id="form-password"
-                    placeholder="Password"
+                    id="passwordInput"
+                    class="form-control"
                   />
+                  <label class="form-label" for="passwordInput">Password</label>
+                </div>
+                <div class="text-center mt-4">
+                  <button
+                    type="submit"
+                    id="boton-sign"
+                    class="btn btn-primary btn-lg disabled"
+                  >
+                    Sign In
+                  </button>
                 </div>
               </form>
-              <button type="submit" id="boton-sign" class="btn btn-primary">
-                Sign In
-              </button>
             </div>
           </li>
         </ul>
