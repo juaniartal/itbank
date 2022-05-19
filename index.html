@@ -2,10 +2,7 @@
 <html lang="en" style="overflow: auto">
   <head>
     <meta charset="utf-8" />
-    <title>
-      Tarjeta de crédito, hipoteca, banca, vehículo | ITBANK Online |
-      itbanking.com.ar
-    </title>
+    <title>ITBANK - Banking, Credit Cards, Loands and Merrill Investing</title>
     <meta
       name="description"
       content="ITBANK online; credit cards, mortgages, commercial banking, auto loans, investing & retirement planning, checking and business banking."
@@ -42,6 +39,8 @@
     <link rel="stylesheet" href="assets/css/normalize.css" />
     <!-- Navbar CSS -->
     <link rel="stylesheet" href="assets/css/navbar.css" />
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <!-- Navbar -->
@@ -163,22 +162,33 @@
       </nav>
     </header>
 
-    <main>
-      <div class="container-fluid px-0 py-0">
-        <ul class="secciones">
-          <li class="li1">
-            <h2 class="main-text">
-              New ITBANK <br />
-              checking customers
-            </h2>
-            <button type="submit" class="btn btn-success" id="btn-signup">
-              Sign Up
+    <main class="container-fluid">
+      <!-- Main Hero Landing -->
+      <section id="mainHero">
+        <div class="row bg-blue">
+          <!-- Open an account Column -->
+          <div class="col text-center py-5">
+            <h2 class="display-3">New ITBANK Checking customers</h2>
+            <p class="lead">
+              Cosider the benefits of opening a ITBANK Total Advantage® Banking
+              Account.
+            </p>
+            <button
+              type="submit"
+              class="btn btn-success btn-lg bg-green"
+              id="btn-signup"
+            >
+              Open an account
             </button>
-          </li>
-          <li class="li2">
-            <div class="formulario">
-              <h1 class="display-5">Welcome</h1>
-              <form class="" method="post">
+          </div>
+          <!-- Sign In Column-->
+          <div class="col-6 d-none d-lg-block py-5 text-black">
+            <!-- LogIn form-->
+            <form>
+              <div
+                class="container bg-light py-1 rounded-5 w-50 text-center"
+              >
+                <h1 class="display-5">Welcome</h1>
                 <!-- Username Input -->
                 <div class="form-outline mb-2">
                   <input
@@ -201,21 +211,21 @@
                   <button
                     type="submit"
                     id="boton-sign"
-                    class="btn btn-primary btn-lg disabled"
+                    class="btn btn-primary btn-lg disabled mb-3"
                   >
                     Sign In
                   </button>
                 </div>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </main>
+              </div>
+            </form>
+          </div>
+          <div class="w-100"></div>
+        </div>
+      </section>
     <hr />
 
     <!--FOOTER-->
-    <footer class="container-fluid bg-light text-muted position-fixed">
+    <footer class="mt-auto container-fluid bg-light text-muted fixed-bottom">
       <!-- Section: REDES SOCIALES -->
       <section
         class="
