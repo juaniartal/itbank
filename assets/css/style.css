@@ -8,3 +8,13 @@
   background: #398100;
   color: whitesmoke;
 }
+
+.bg-white {
+  background: whitesmoke;
+  color: black;
+}
+
+.bg-gray {
+  background: #585858;
+  color: whitesmoke;
+}
