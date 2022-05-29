@@ -23,6 +23,7 @@ document
 
     addEntryToList(data);
     updateSplit();
+    e.target.reset();
   });
 
 function updateSplit() {
