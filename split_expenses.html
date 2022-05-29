@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Itbank Online - Split Expenses</title>
+    <meta
+      name="description"
+      content="ITBANK online; credit cards, mortgages, commercial banking, auto loans, investing & retirement planning, checking and business banking."
+    />
+    <meta
+      name="author"
+      content="Juan Ignacio Artal, Roberto Nicolás Savinelli, Tomas Agustin Sanchez, Femenia Ignacio, Tisera Camila"
+    />
+    <meta
+      name="generator"
+      content="Juan Ignacio Artal, Roberto Nicolás Savinelli, Tomas Agustin Sanchez, Femenia Ignacio, Tisera Camila"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.ico" />
+
+    <!-- MDB -->
+    <link href="assets/css/mdb.min.css" rel="stylesheet" />
+
+    <!-- Normalize -->
+    <link rel="stylesheet" href="assets/css/normalize.css" />
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <!-- Main Tag CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <section id="add" class="my-2">
+        <div class="container">
+          <div class="card mx-auto mt-5">
+            <div class="card-header">
+              <h5 class="card-title">
+                <i class="fa-solid fa-scissors"></i>
+                <i class="fa-solid fa-money-bills"></i> Split expenses with
+                friends
+              </h5>
+            </div>
+            <div class="card-body">
+              <form id="splitExpensesForm" method="post">
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="text"
+                    id="nameInput"
+                    class="form-control"
+                    name="name"
+                    placeholder="Kate Hunington"
+                    required
+                  />
+                  <label class="form-label" for="nameInput">Name*</label>
+                </div>
+
+                <!-- Amount input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="number"
+                    name="amount"
+                    id="amountInput"
+                    class="form-control"
+                    min="0"
+                    placeholder="0"
+                    step=".01"
+                    required
+                  />
+                  <label class="form-label" for="amountInput">Amount*</label>
+                </div>
+
+                <!-- Submit button -->
+                <button
+                  type="submit"
+                  class="btn btn-success btn-lg btn-rounded bg-green mb-4"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                  Add
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Friends Section -->
+      <section id="dividers" class="my-3">
+        <div class="container">
+          <!-- Friends List -->
+          <ul class="list-group list-group-light mt-5" id="friendsList"></ul>
+          <div class="text-end">
+            <h3 class="text-success">Total: $<span id="totalSum">0</span></h3>
+            <h5 class="text-muted">Each: $<span id="each">0</span></h5>
+          </div>
+        </div>
+      </section>
+      <!-- Friends Section -->
+    </main>
+    <!-- MDB -->
+    <script type="text/javascript" src="assets/js/mdb.min.js"></script>
+    <script type="text/javascript" src="assets/js/splitExpenses.js"></script>
+  </body>
+</html>
