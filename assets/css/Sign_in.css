@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /*Imagen de fondo*/
+  body {
+    font-family: arial;
+    background-image: url("itbank\assets\icons\ITBANK.png");
+
+  }
+  /*Cartel de inicio de sesion*/
+  .Formulario-acceso {
+    width: 400px;
+    height: 340px;
+    background: #575756;
+    margin: auto;
+    margin-top: 180px;
+    box-shadow: 7px 13px 37px rgb(0, 0, 0);
+    padding: 20px 30px;
+    border-top: 4px solid #017bab;
+    color: white;
+  }
+  
+  /*Iniciar Sesion (titulo)*/
+  .Formulario-acceso h5 {
+    margin: 0;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+
+  }
+  /*Usuario y Contraseña*/
+  .controls {       
+    width: 100%;
+    border: 1px solid #017bab;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #fffefe;
+    font-size: 14px;
+    font-weight: bold;
+    color:rgb(56, 55, 55)
+  }
+  /*Botones (ingresar)*/
+  .buttons {
+    width: 100%;
+    height: 40px;
+    background: #017bab;
+    border: none;
+    color: rgb(250, 250, 250);
+    margin-bottom: 16px;
+  }
+    /*Linea de "Olvidaste tu contraseña"*/
+  .Formulario-acceso p{
+    height: 30px;
+    text-align: center;
+    border-bottom: 1px solid;
+  }
+  
+  /*Olvidaste tu contraseña*/
+  .Formulario-acceso a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  
+  .Formulario-acceso a:hover {
+    text-decoration: underline;
+  }
