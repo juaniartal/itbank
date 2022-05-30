@@ -1,7 +1,7 @@
 /**
  * splitExpenses.js
  *
- * @file  <DESCRIPTION>
+ * @file  Split Expenses Script for adding items to a list
  * @author Tomás Sánchez
  * @since  05.29.2022
  */
@@ -10,6 +10,8 @@
  * @type {[{name: string, amount: string}]}
  */
 var aData = [];
+
+var counter = 0;
 
 document
   .getElementById("splitExpensesForm")
@@ -26,9 +28,14 @@ document
     e.target.reset();
   });
 
+/**
+ * Updates the values of Total and each.
+ */
 function updateSplit() {
-  let sum = aData.map((d) => d.amount).reduce((a, b) => Number(a) + Number(b));
-  let each = sum / aData.length;
+  let sum = aData
+    .map((d) => d.amount)
+    .reduce((a, b) => Number(a) + Number(b), 0);
+  let each = sum > 0 ? sum / aData.length : 0;
 
   document.getElementById("totalSum").innerHTML = sum.toLocaleString();
   document.getElementById("each").innerHTML = each.toLocaleString();
@@ -42,26 +49,31 @@ function updateSplit() {
 function addEntryToList(data) {
   var oList = document.getElementById("friendsList");
 
+  data.id = `friend-${counter++}`;
   aData.push(data);
 
-  var oItem = createListItem();
-
-  var oAvatar = createAvatar(data);
-  var oBadge = createBadge(data);
-
-  oItem.appendChild(oAvatar);
-  oItem.appendChild(oBadge);
+  var oItem = createListItem(data);
 
   oList.appendChild(oItem);
 }
 
-function createListItem() {
+/**
+ * Creates a list item to be displayed
+ * @param {{id: string, name: string, amount: number}} data the form data
+ * @returns {HTMLLIElement} the list item
+ */
+function createListItem(data) {
   var oItem = document.createElement("li");
+  oItem.id = data.id;
 
   var sClasses =
     "list-group-item d-flex justify-content-between align-items-start";
-
   addClasses(oItem, sClasses);
+
+  var oAvatar = createAvatar(data);
+  oItem.appendChild(oAvatar);
+  var oDelete = createDelete();
+  oItem.appendChild(oDelete);
 
   return oItem;
 }
@@ -122,9 +134,11 @@ function createName(data) {
   var oDiv = document.createElement("div");
   addClasses(oDiv, "ms-3");
   var oP = document.createElement("p");
-  addClasses(oP, "fw-bold mb-2");
+  addClasses(oP, "fw-bold mb-0");
   oP.innerHTML = `${data.name}`;
   oDiv.appendChild(oP);
+  var oBadge = createBadge(data);
+  oDiv.appendChild(oBadge);
   return oDiv;
 }
 
@@ -156,6 +170,35 @@ function createBadge(data) {
   oSpan.innerHTML = `$${Number(data.amount).toLocaleString()}`;
 
   return oSpan;
+}
+
+/**
+ * Creates a delete button.
+ *
+ * @returns {HTMLAElement} a link delete button
+ */
+function createDelete() {
+  var oA = document.createElement("a");
+  oA.role = "button";
+  oA.href = "#!";
+  addClasses(oA, "text-dark");
+  oIcon = document.createElement("i");
+  addClasses(oIcon, "fa-solid fa-x");
+  oIcon.onclick = onDelete;
+  oA.appendChild(oIcon);
+  return oA;
+}
+
+/**
+ * Deletes a frind of the list.
+ *
+ * @param {*} e an event
+ */
+function onDelete(e) {
+  oListItem = e.target.parentElement.parentElement;
+  aData = aData.filter((d) => d.id != oListItem.id);
+  oListItem.remove();
+  updateSplit();
 }
 
 /**
