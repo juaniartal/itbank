@@ -100,31 +100,27 @@
       <!-- Friends Section -->
       <section id="dividers">
         <div class="container">
-          <!-- Friends List -->
-          <div class="container overflow-auto" style="max-height: 100vw">
-            <ul
-              class="
-                list-group list-group-light
-                mt-2
-                shadow-sm
-                p-3
-                mb-5
-                bg-body
-                rounded
-              "
-              id="friendsList"
-            >
-              <h4 class="sticky-top bg-body py-2">
-                Group (<span class="fw-bold" id="noOfFriends">0</span>)
-              </h4>
-              <p class="text-center text-muted" id="no-data-text">
-                Noone has been add yet.
-              </p>
-            </ul>
-          </div>
-          <div class="text-end mt-3 me-4">
-            <h3 class="text-success">Total: $<span id="totalSum">0</span></h3>
-            <h5 class="text-muted">Each: $<span id="each">0</span></h5>
+          <div class="shadow py-2 rounded">
+            <!-- Friends List -->
+            <div class="container overflow-auto" style="max-height: 100vw">
+              <ul class="list-group list-group-light mt-2 p-2" id="friendsList">
+                <!-- List Header -->
+                <div class="sticky-top bg-body">
+                  <h4 class="text-start d-inline-block">
+                    Group (<span class="fw-bold" id="noOfFriends">0</span>)
+                  </h4>
+                </div>
+                <p class="text-center text-muted" id="no-data-text">
+                  Noone has been add yet.
+                </p>
+                <!-- Friend Items -->
+              </ul>
+            </div>
+            <hr />
+            <div class="text-end mt-3 me-4">
+              <h3 class="text-success">Total: $<span id="totalSum">0</span></h3>
+              <h5 class="text-muted">Each: $<span id="each">0</span></h5>
+            </div>
           </div>
         </div>
       </section>
