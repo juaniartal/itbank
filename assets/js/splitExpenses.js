@@ -39,6 +39,13 @@ function updateSplit() {
 
   document.getElementById("totalSum").innerHTML = sum.toLocaleString();
   document.getElementById("each").innerHTML = each.toLocaleString();
+  document.getElementById("noOfFriends").innerHTML = aData.length;
+
+  if (aData.length == 0) {
+    document.getElementById("no-data-text").classList.remove("d-none");
+  } else {
+    document.getElementById("no-data-text").classList.add("d-none");
+  }
 }
 
 /**
@@ -67,7 +74,7 @@ function createListItem(data) {
   oItem.id = data.id;
 
   var sClasses =
-    "list-group-item d-flex justify-content-between align-items-start";
+    "list-group-item d-flex justify-content-between align-items-start p-3";
   addClasses(oItem, sClasses);
 
   var oAvatar = createAvatar(data);
@@ -99,7 +106,7 @@ function createAvatar(data) {
 
   addClasses(oDiv, "d-flex align-items-center");
 
-  var oImage = createImage();
+  var oImage = createImage(data);
 
   oDiv.appendChild(oImage);
   var oName = createName(data);
@@ -113,14 +120,35 @@ function createAvatar(data) {
  *
  * @returns an img element
  */
-function createImage() {
-  var oImage = document.createElement("img");
-  addClasses(oImage, "rounded-circle");
+function createImage(data) {
+  var oImage = document.createElement("div");
+
+  var aBgClasses = [
+    "bg-blue",
+    "bg-green",
+    "bg-primary",
+    "bg-secondary",
+    "bg-warning",
+    "bg-dark",
+    "bg-danger",
+    "bg-info",
+  ];
+
+  addClasses(
+    oImage,
+    `rounded-circle ${
+      aBgClasses[getRandomInt(0, aBgClasses.length - 1)]
+    } text-white position-relative user-select-none overflow-hidden`
+  );
+
   oImage.style = "width: 45px; height: 45px";
-  oImage.src = `https://mdbootstrap.com/img/new/avatars/${getRandomInt(
-    1,
-    9
-  )}.jpg`;
+
+  var sInitials = data.name.match(/\b\w/g).join("").toUpperCase();
+
+  if (sInitials.length > 1)
+    sInitials = sInitials[0] + sInitials[sInitials.length - 1];
+
+  oImage.innerHTML = `<h5 class="position-absolute top-50 start-50 translate-middle">${sInitials}</h5>`;
   return oImage;
 }
 
@@ -181,9 +209,8 @@ function createDelete() {
   var oA = document.createElement("a");
   oA.role = "button";
   oA.href = "#!";
-  addClasses(oA, "text-dark");
   oIcon = document.createElement("i");
-  addClasses(oIcon, "fa-solid fa-x");
+  addClasses(oIcon, "btn btn-link btn-rounded btn-sm text-dark fa-solid fa-x");
   oIcon.onclick = onDelete;
   oA.appendChild(oIcon);
   return oA;
