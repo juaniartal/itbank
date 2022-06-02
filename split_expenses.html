@@ -43,61 +43,82 @@
     />
   </head>
   <body>
+    <header>
+      <div class="container text-center my-4">
+        <h1 class="display-4">Split Expenses</h1>
+      </div>
+    </header>
     <main style="max-width: 100vw">
-      <section id="add">
-        <div class="container">
-          <div class="card mx-auto my-3">
-            <div class="card-header">
-              <h5 class="card-title">
-                <i class="fa-solid fa-scissors"></i>
-                Split expenses with friends
-              </h5>
-            </div>
-            <div class="card-body">
-              <form id="splitExpensesForm" method="post">
-                <!-- Name input -->
-                <div class="form-outline mb-4">
-                  <input
-                    type="text"
-                    id="nameInput"
-                    class="form-control"
-                    name="name"
-                    placeholder="Kate Hunington"
-                    required
-                  />
-                  <label class="form-label" for="nameInput">Name*</label>
-                </div>
+      <!-- Add Friend Section -->
+      <section>
+        <div class="container searchContainer">
+          <div class="search card card-body">
+            <h3>Keep your friendhips intact</h3>
+            <p class="lead">
+              Using Split Expenses app, you will be able to equitably share
+              expenses with your friends simple: enter a friend name and an
+              amount as contribution.
+            </p>
+            <form id="splitExpensesForm" method="post">
+              <!-- Name input -->
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="nameInput"
+                  class="form-control"
+                  name="name"
+                  placeholder="Kate Hunington"
+                  required
+                />
+                <label class="form-label" for="nameInput">Name*</label>
+              </div>
 
-                <!-- Amount input -->
-                <div class="form-outline mb-4">
-                  <input
-                    type="number"
-                    name="amount"
-                    id="amountInput"
-                    class="form-control"
-                    min="0"
-                    placeholder="0"
-                    step=".01"
-                    required
-                  />
-                  <label class="form-label" for="amountInput">Amount*</label>
-                </div>
+              <!-- Amount input -->
+              <div class="form-outline mb-4">
+                <input
+                  type="number"
+                  name="amount"
+                  id="amountInput"
+                  class="form-control"
+                  min="0"
+                  placeholder="0"
+                  step=".01"
+                  required
+                />
+                <label class="form-label" for="amountInput">Amount*</label>
+              </div>
 
-                <!-- Submit button -->
-                <button
-                  type="submit"
-                  class="btn btn-success btn-lg btn-rounded bg-green mb-4"
-                >
-                  <i class="fa-solid fa-plus"></i>
-                  Add
-                </button>
-              </form>
-            </div>
+              <div class="container mt-4">
+                <div class="float-end">
+                  <!-- Submit button -->
+
+                  <button
+                    type="submit"
+                    class="btn btn-success btn-lg btn-rounded bg-green mx-2"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                  </button>
+                  <!-- Reset button -->
+                  <button
+                    type="reset"
+                    id="buttonClear"
+                    class="btn btn-primary btn-lg btn-rounde btn-rounded mx-2"
+                    data-dismiss="modal"
+                  >
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </section>
 
-      <!-- Friends Section -->
+      <br />
+
+      <!-- List Section -->
       <section id="dividers">
         <div class="container mb-2">
           <div class="shadow py-2 rounded bg-body">
