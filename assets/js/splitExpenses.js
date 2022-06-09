@@ -46,6 +46,8 @@ function updateSplit() {
   } else {
     document.getElementById("no-data-text").classList.add("d-none");
   }
+
+  updateDownloadData();
 }
 
 /**
@@ -240,3 +242,15 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+/**
+ * Updates the download button encoded data.
+ */
+function updateDownloadData() {
+  var sData =
+    "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(aData));
+  var oButton = document.getElementById("downloadButton");
+  oButton.setAttribute("href", `data:${sData}`);
+}
+
+updateDownloadData();
