@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Itbank Online - Sign In</title>
+    <meta
+      name="description"
+      content="ITBANK online; Manage your credit cards, debit cards, mortgages, loans, etc."
+    />
+    <meta
+      name="author"
+      content="Juan Ignacio Artal, Roberto Nicolás Savinelli, Tomas Agustin Sanchez, Femenia Ignacio, Tisera Camila"
+    />
+    <meta
+      name="generator"
+      content="Juan Ignacio Artal, Roberto Nicolás Savinelli, Tomas Agustin Sanchez, Femenia Ignacio, Tisera Camila"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.ico" />
+
+    <!-- MDB -->
+    <link href="assets/css/mdb.min.css" rel="stylesheet" />
+
+    <!-- Normalize -->
+    <link rel="stylesheet" href="assets/css/normalize.css" />
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/resetPassword.css" />
+  </head>
+  <body style="background: url(assets/images/andrea-cau-nV7GJmSq3zc-unsplash.jpg); background-repeat: no-repeat; background-size: cover;">
+    <main>
+      <div id="card" class="card login-form container">
+        <div class="card-body">
+          <a class="text-dark" href="#">
+            <h3>ITBANK</h3>
+          </a>
+          <h4 class="card-title text-center mb-3 text-muted">Online Banking</h4>
+          <div class="card-text">
+            <form class="mt-0">
+                  <!-- Username Input -->
+                  <div class="form-outline mb-4">
+                    <input
+                      type="email"
+                      id="usernameInput"
+                      class="form-control"
+                      placeholder="your@mail.com"
+                    />
+                    <label class="form-label" for="usernameInput">Username</label>
+                  </div>
+                  <div class="form-outline mb-2">
+                    <input
+                      type="password"
+                      id="passwordInput"
+                      class="form-control"
+                    />
+                    <label class="form-label" for="passwordInput">Password</label>
+                  </div>
+                  <div class="text-center w-auto">
+                    <button
+                      type="submit"
+                      id="boton-sign"
+                      class="btn btn-primary btn-lg w-100 disabled mb-3"
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                  <div
+                    class="container-fluid align-content-start text-start mb-2"
+                  >
+                    <a href="/reset_password.html"
+                      >Forgot username/password?</a
+                    >
+                    <br>
+                    <a href="/reset_password.html"
+                      >
+                      Not Enrolled? Sign Up Now.                      
+                      </a
+                    >                    
+                  </div>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </main> 
+    <!-- MDB -->
+    <script type="text/javascript" src="assets/js/mdb.min.js"></script>
+  </body>
+</html>
