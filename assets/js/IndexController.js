@@ -27,12 +27,6 @@ function getDollar() {
           // Info:
           result = result.map((x) => x.casa);
 
-          let official = result.find((x) => x.nombre == "Dolar Oficial");
-          let mep = result.find((x) => x.nombre == "Dolar Bolsa");
-
-          oData.official = new Dollar(official?.compra, official?.venta);
-          oData.mep = new Dollar(mep?.compra, mep?.venta);
-
           updateDollar(result);
         })
         .catch((e) => console.error(e))
@@ -51,6 +45,12 @@ function updateDollar(data) {
 }
 
 // TODO:
-function updateDesktop(data) {}
+function updateDesktop(data) {
+  let official = result.find((x) => x.nombre == "Dolar Oficial");
+  let mep = result.find((x) => x.nombre == "Dolar Bolsa");
+
+  oData.official = new Dollar(official?.compra, official?.venta);
+  oData.mep = new Dollar(mep?.compra, mep?.venta);
+}
 // TODO:
 function updateMobile(data) {}
