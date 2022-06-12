@@ -44,26 +44,43 @@
   </head>
 
   <body class="bg-light">
-    <!-- Navbar -->
     <header>
-      <section class="container-fluid bg-light mb-0">
-        <div class="py-2 d-none d-lg-block">
-          <div class="col ms-5 me-2 d-inline">
-            <a
-              class="header-navigation header-navigation-active"
-              aria-current="page"
-              href="#"
-              >Personal</a
-            >
-          </div>
-          <div class="col mx-2 d-inline">
-            <a class="header-navigation" href="#"> Commercial </a>
-          </div>
-          <div class="col mx-2 d-inline">
-            <a class="header-navigation" href="#"> Business </a>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-sm bg-light d-none d-lg-block py-1">
+        <div class="container-fluid">
+          <div class="mx-4 collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="me-3">
+                <a
+                  class="header-navigation header-navigation-active pb-0"
+                  aria-current="page"
+                  href="#"
+                  >Personal</a
+                >
+              </li>
+              <li class="me-3">
+                <a class="header-navigation header-navigation-disabled" href="#"
+                  >Commercial</a
+                >
+              </li>
+              <li class="me-3">
+                <a class="header-navigation header-navigation-disabled"
+                  >Business</a
+                >
+              </li>
+            </ul>
+            <span class="navbar-text header-navigation me-3">
+              Dollar Today: <b>$<span id="dollar-today-buy-header">0.00</span></b
+              >/<b>$<span id="dollar-today-sell">0.00</span></b>
+            </span>
+            <span class="navbar-text header-navigation">
+              Dollar MEP: <b>$<span id="dollar-mep-buy-header">0.00</span></b
+              >/<b>$<span id="dollar-mp-sell">0.00</span></b>
+            </span>
           </div>
         </div>
-      </section>
+      </nav>
+
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <!-- Bank Brand -->
@@ -74,7 +91,12 @@
           </div>
           <!-- Bank Brand -->
           <!-- Toggle button -->
-          <a class="ms-auto d-lg-none me-2" type="button" aria-label="Sign In" href="sign_in.html">
+          <a
+            class="ms-auto d-lg-none me-2"
+            type="button"
+            aria-label="Sign In"
+            href="sign_in.html"
+          >
             Sign In
           </a>
 
@@ -248,14 +270,7 @@
         <div class="container-fluid">
           <nav aria-label="Explore Itbank" class="overflow-auto flex-nowrap">
             <ul
-              class="
-                pagination
-                d-table
-                align-items-center align-text-center
-                justify-content-center
-                text-center
-                mx-auto
-              "
+              class="pagination d-table align-items-center align-text-center justify-content-center text-center mx-auto"
             >
               <li class="page-item d-table-cell">
                 <a class="page-link" href="#">
@@ -307,36 +322,41 @@
 
       <!-- Featured Section -->
       <section>
-        <div class="container mt-5">
-          <!-- Tangible Benefits Column -->
-          <div class="row align-items-center text-center">
-            <div class="col mb-2">
-              <img
-                class="img-responsive img-fluid rounded"
-                src="assets/images/mobile-shield.png"
-              />
-            </div>
-            <div class="col mb-2">
-              <h3>Itbank App</h3>
-              <p>
-                Online Banking just got better. Your bank always with you, in
-                your pocket.
-              </p>
-              <a
-                type="submit"
-                class="btn btn-success btn-lg bg-green mt-2"
-                id="btn-signup"
-              >
-                Get Started
-              </a>
+        <div class="bg-light">
+          <div class="container py-4">
+            <!-- Tangible Benefits Column -->
+            <div class="row align-items-center text-center">
+              <div class="col mb-2 px-5 d-none d-lg-block">
+                <img
+                  class="img-responsive img-fluid rounded"
+                  src="assets/images/mobile-app.jpg"
+                />
+              </div>
+              <div class="col mb-2 px-5">
+                <h3>Itbank Mobile app</h3>
+
+                <b>Stay Connected with Your Money</b>
+                <p>
+                  Online Banking just got better. Your bank always with you, in
+                  your pocket. The Itbank Mobile app gives you personalized tools and insights so you can save, spend and manage your money with ease.
+                </p>          
+                <a
+                  type="submit"
+                  class="btn btn-success btn-lg bg-green mt-2"
+                  id="btn-signup"
+                >
+                  Get Started
+                </a>
+              </div>
             </div>
           </div>
-          <hr />
-          <div class="row align-items-center">
+        </div>
+        <div class="container py-4">
+          <div class="row align-items-center text-center">
             <div class="col mb-2">
-              <div class="container text-center">
+              <div class="container px-5">
                 <h3>To infinity... and Beyond</h3>
-                <p class="d-none d-lg-block">
+                <p class="">
                   Get 2.5% interest and give your savings a lift when you open
                   your first ITBANK High Interest eSavings account.
                 </p>
@@ -349,14 +369,13 @@
                 </a>
               </div>
             </div>
-            <div class="col mb-2">
+            <div class="col mb-2 d-none d-lg-block">
               <img
                 class="img-responsive img-fluid rounded"
-                src="assets/images/bank.png"
+                src="assets/images/to-infinity-and-beyond.jpg"
               />
             </div>
           </div>
-          <hr />
         </div>
       </section>
       <!-- Featured Section -->
@@ -534,9 +553,8 @@
 
     <!--Footer-->
 
-    <footer class="text-center text-lg-start text-muted">
+    <footer class="text-center text-lg-start text-muted bg-blue">
       <section
-        id="color"
         class="d-flex justify-content-center justify-content-lg-between p-4"
       >
         <div id="textFooter" class="me-5 d-none d-lg-block">
@@ -570,7 +588,7 @@
         </div>
         <!-- Social Networks -->
       </section>
-      <div class="container bg-blue d-lg-none py-2">
+      <div class="container d-lg-none py-2">
         <small class="d-block">
           ITBANK is a fictitious entity created solely for educational purposes
           as part of the full stack developer program of the Technological

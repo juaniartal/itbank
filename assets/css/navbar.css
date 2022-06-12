@@ -13,6 +13,10 @@
   color: #101820;
 }
 
+.header-navigation-disabled {
+  color: #5c5e61;
+}
+
 
 .dark-mode {
   background-color: black;
