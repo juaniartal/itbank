@@ -6,6 +6,10 @@
  * @since  06.12.2022
  */
 
+const API_URL = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
+
+var DATA = [];
+
 class Dollar {
   constructor(b = "--", s = "--") {
     this.buy = b;
@@ -18,16 +22,12 @@ class Dollar {
 })();
 
 function getDollar() {
-  fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
+  fetch(API_URL)
     .then((data) =>
       data
         .json()
         .then((result) => {
-          let oData = { official: new Dollar(), mep: new Dollar() };
-          // Info:
-          result = result.map((x) => x.casa);
-
-          updateDollar(result);
+          updateDollar(result.map((x) => x.casa));
         })
         .catch((e) => console.error(e))
     )
@@ -40,17 +40,15 @@ function getDollar() {
  * @param {{official: Dollar, mep: Dollar}} data the dollar data
  */
 function updateDollar(data) {
-  // updateDesktop(data);
-  // updateMobile(data);
+  updateDesktop(data);
+  updateMobile(data);
 }
 
 // TODO:
 function updateDesktop(data) {
-  let official = result.find((x) => x.nombre == "Dolar Oficial");
-  let mep = result.find((x) => x.nombre == "Dolar Bolsa");
-
-  oData.official = new Dollar(official?.compra, official?.venta);
-  oData.mep = new Dollar(mep?.compra, mep?.venta);
+  DATA = data;
+  console.log(data);
 }
+
 // TODO:
 function updateMobile(data) {}
