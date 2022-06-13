@@ -45,7 +45,7 @@
   </head>
 
   <body class="bg-light">
-    <header>
+    <header class="sticky-top">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-sm bg-light d-none d-lg-block py-1">
         <div class="container-fluid">
@@ -197,13 +197,14 @@
               Cosider the benefits of opening a ITBANK Total Advantage® Banking
               Account.
             </p>
-            <button
+            <a
               type="submit"
               class="btn btn-success btn-lg bg-green"
               id="btn-signup"
+              href="sign_in.html"
             >
               Open an account
-            </button>
+            </a>
           </div>
           <!-- Sign In Column-->
           <div class="col-6 d-none d-lg-block py-5 text-black">
@@ -383,11 +384,40 @@
             </div>
           </div>
         </div>
+        <div class="bg-light">
+          <div class="container py-4">
+            <!-- Tangible Benefits Column -->
+            <div class="row align-items-center text-center">
+              <div class="col-md-6 mb-2 px-5">
+                <img
+                  class="img-responsive img-fluid rounded"
+                  style="max-height: 50vh"
+                  src="assets/images/clay-banks-POzx_amnWJw-unsplash.jpg"
+                />
+              </div>
+              <div class="col mb-2 px-5">
+                <h3>Turn your goals into action</h3>
+                <p>
+                  We provided you with an easy way to set and track short- and
+                  long‑term financial goals, get personalized advice when you
+                  need it most and more.
+                </p>
+                <a
+                  type="submit"
+                  class="btn btn-success btn-lg bg-green mt-2"
+                  id="btn-signup"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <!-- Featured Section -->
 
       <!-- Cards Section -->
-      <section class="bg-light py-2">
+      <section class="py-2">
         <div class="container">
           <div class="container-fluid text-center my-5">
             <h3 class="display-5">
@@ -555,10 +585,22 @@
         </div>
       </section>
       <!-- Cards Section -->
+      <section class="bg-light py-2">
+        <div class="container">
+          <h4>Regret button</h4>
+          <div class="row">
+            <div class="col">
+              <p>Did you regret or want to cancel your request?</p>
+            </div>
+            <div class="col justify-content-end text-end">
+              <a class="btn btn-outline-primary btn-rounded">Enter Here</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!--Footer-->
-
     <footer class="text-center text-lg-start text-muted bg-blue">
       <section
         class="d-flex justify-content-center justify-content-lg-between p-4"
