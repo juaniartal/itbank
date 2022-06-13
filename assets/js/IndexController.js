@@ -8,8 +8,6 @@
 
 const API_URL = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
 
-var DATA = [];
-
 class Dollar {
   constructor(b = "--", s = "--") {
     this.buy = b;
@@ -45,10 +43,7 @@ function updateDollar(data) {
 }
 
 // TODO:
-function updateDesktop(data) {
-  DATA = data;
-  console.log(data);
-}
+function updateDesktop(data) {}
 
 // TODO:
 function updateMobile(data) {}
