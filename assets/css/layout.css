@@ -1,0 +1,30 @@
+.card-title {
+  color: aliceblue;
+  background-color: rgb(114, 111, 111);
+  font-size: small;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0px 10px 0px 10px;
+  text-align: center;
+}
+.card-body {
+  background-color: rgb(221, 218, 182);
+  border-radius: 5px;
+  margin: 0px 10px 10px 10px;
+  text-align: center;
+}
+#titulo-principal {
+  margin: 10px;
+}
+.card-text {
+  background-color: dimgray;
+}
+.text-muted {
+  color: white;
+}
+#icon-dolar {
+  vertical-align: middle;
+  max-width: 25px;
+  max-height: 25px;
+  margin: 0px 10px 0px 0px;
+}
