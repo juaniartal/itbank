@@ -38,184 +38,57 @@ function getDollar() {
  * @param {{official: Dollar, mep: Dollar}} data the dollar data
  */
 function updateDollar(data) {
-  updateDesktop(data);
-  updateMobile(data);
+  updateHeader(data);
+  updateBody(data);
 }
 // FUNCTION APIS
 
-window.onload = officialDolarBuy()
-function officialDolarBuy() {
-  var officialBuy = document.getElementById("dolar-oficial-hoy-compra")
-  fetch(API_URL)
-     .then(Response => Response.json())
-     .then(data => {
-       console.log(data.result)
-       officialBuy.innerHTML += `
-       <b><span id="dolar-oficial-hoy-compra">${data[0].casa.compra}</span></b>
-       `
-     })
-   }
-window.onload = officialDolarSell()
-function officialDolarSell() {
-  var officialVenta = document.getElementById("dolar-oficial-hoy-venta")
-  fetch(API_URL)
-     .then(Response => Response.json())
-     .then(data => {
-       console.log(data.result)
-       officialVenta.innerHTML += `
-       <b><span id="dolar-oficial-hoy-venta">${data[0].casa.venta}</span></b>
-       `
-     })
-   }
-window.onload = SellBlue()
-function SellBlue() {
-  var blueVenta = document.getElementById("dolar-blue-hoy-venta")
-  fetch(API_URL)
-     .then(Response => Response.json())
-     .then(data => {
-       console.log(data.result)
-       blueVenta.innerHTML += `
-       <b>$<span id="dolar-blue-hoy-venta">${data[1].casa.venta}</span></b>
-       `
-     })
-   }
-window.onload = BuyBlue()
-function BuyBlue() {
- var blueCompra = document.getElementById("dolar-blue-hoy-compra")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      blueCompra.innerHTML += `
-      <b>$<span id="dolar-blue-hoy-compra">${data[1].casa.compra}</span></b>
-      `
-    })
- 
-  }
-  window.onload = ContadoConLiqui()
-  function ContadoConLiqui() {
-    var ContLiqui = document.getElementById("contado-referencia")
-    fetch(API_URL)
-       .then(Response => Response.json())
-       .then(data => {
-         console.log(data.result)
-         ContLiqui.innerHTML += `
-         <b>$<span id="contado-referencia">${data[3].casa.venta}</span></b>
-         `
-       })
-     }
-
-  
-
 //Function with Dolar Today
-window.onload = BuyDollarToday()
-function BuyDollarToday() {
- var buyTodayDollar = document.getElementById("dollar-today-buy-header")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      buyTodayDollar.innerHTML += `
-      <b>$<span id="dollar-today-buy-header">${data[1].casa.compra}</span></b>
-      `
-    })
-}
-window.onload = SellDollarToday()
-function SellDollarToday() {
- var sellTodayDollar = document.getElementById("dollar-today-sell-header")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      sellTodayDollar.innerHTML += `
-      <b>$<span id="dollar-today-sell-header">${data[1].casa.venta}</span></b>
-      `
-    })
-}
-//Function with Dolar MEP
-window.onload = DollarMEPsell()
-function DollarMEPsell() {
- var mepSell = document.getElementById("dollar-mep-sell-header")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      mepSell.innerHTML += `
-      <b>$<span id="dollar-mep-sell-header">${data[4].casa.venta}</span></b>
-      `
-    })
-}
-window.onload = DollarMEPbuy()
-function DollarMEPbuy() {
- var mepBuy = document.getElementById("dollar-mep-buy-header")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      mepBuy.innerHTML += `
-      <b>$<span id="dollar-mep-buy-header">${data[4].casa.compra}</span></b>
-      `
-    })
-}
-//Function with Dolar Average
-window.onload = BuyProm()
-function BuyProm() {
- var buyPromedio = document.getElementById("dolar-promedio-hoy-compra")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      buyPromedio.innerHTML += `
-      <b>$<span id="dolar-promedio-hoy-compra">${data[0].casa.compra}</span></b>
-      `
-    })
-}
-window.onload = SellProm()
-function SellProm() {
- var sellPromedio = document.getElementById("dolar-promedio-hoy-venta")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      sellPromedio.innerHTML += `
-      <b>$<span id="dolar-promedio-hoy-sell">${data[0].casa.venta}</span></b>
-      `
-    })
-}
- 
-//Function with Dolar Exchange
-window.onload = DolarExchange()
-function DolarExchange() {
- var dolarExchange = document.getElementById("dolar-bolsa")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      dolarExchange.innerHTML += `
-      <b>$<span id="dolar-bolsa">${data[4].casa.venta}</span></b>
-      `
-    })
+function dollarToday(dollar) {
+  var buyTodayDollar = document.getElementById("dollar-today-buy-header");
+  var sellTodayDollar = document.getElementById("dollar-today-sell-header");
+  buyTodayDollar.innerHTML = `${dollar.compra}`;
+  sellTodayDollar.innerHTML = `${dollar.venta}`;
 }
 
-//Function with Dolar Turist
-window.onload = DolarTurist()
-function DolarTurist() {
- var dolarTuristPrice = document.getElementById("dolar-turista")
- fetch(API_URL)
-    .then(Response => Response.json())
-    .then(data => {
-      console.log(data.result)
-      dolarTuristPrice.innerHTML += `
-      <b>$<span id="dolar-turista">${data[6].casa.venta}</span></b>
-      `
-    })
+function dollarMEP(dollar) {
+  var buyTodayDollar = document.getElementById("dollar-mep-buy-header");
+  var sellTodayDollar = document.getElementById("dollar-mep-sell-header");
+  buyTodayDollar.innerHTML = `${dollar.compra}`;
+  sellTodayDollar.innerHTML = `${dollar.venta}`;
 }
 
-
-
-
- 
-function updateDesktop(data) {}
+function updateHeader(data) {
+  dollarToday(data[0]);
+  dollarMEP(data[1]);
+}
 
 // TODO:
-function updateMobile(data) {}
+function updateBody(data) {
+  data.forEach((dollar) => updateHTMLBody(dollar));
+}
+
+function updateHTMLBody(dollar) {
+  const hashDollar = {
+    "Dolar Oficial": "dolar-oficial",
+    "Dolar Blue": "dolar-blue",
+    "Dolar Contado con Liqui": "dolar-ccl",
+    "Dolar Bolsa": "dolar-bolsa",
+    "Dolar Soja": "dolar-soja",
+    "Dolar turista": "dolar-turista",
+  };
+
+  let hashValue = hashDollar[dollar.nombre];
+
+  if (hashValue) {
+    updateDollarToday(dollar, hashValue);
+  }
+}
+
+function updateDollarToday(dollar, name) {
+  var htmlSell = document.getElementById(`${name}-hoy-venta`);
+  var htmlBuy = document.getElementById(`${name}-hoy-compra`);
+
+  htmlSell.innerHTML = `${dollar.venta}`;
+  htmlBuy.innerHTML = `${dollar.compra}`;
+}
