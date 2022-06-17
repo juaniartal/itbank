@@ -55,18 +55,6 @@ function BuyBlue() {
       `
     })
   }
-function BuyBlue() {
-  var buy = document.getElementById("dolar-blue-hoy-compra")
-  fetch(API_URL)
-   .then(Response => Response.json())
-   .then(data => {
-     console.log(data.result)
-     buy.innerHTML += `
-     <b>$<span id="dolar-blue-hoy-compra">${data[1].casa.compra}</span></b>
-       `
-    })
-}
-// TODO:
 function updateDesktop(data) {}
 
 // TODO:
