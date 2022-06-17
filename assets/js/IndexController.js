@@ -43,18 +43,68 @@ function updateDollar(data) {
 }
 // FUNCTION APIS
 
+window.onload = officialDolarBuy()
+function officialDolarBuy() {
+  var officialBuy = document.getElementById("dolar-oficial-hoy-compra")
+  fetch(API_URL)
+     .then(Response => Response.json())
+     .then(data => {
+       console.log(data.result)
+       officialBuy.innerHTML += `
+       <b><span id="dolar-oficial-hoy-compra">${data[0].casa.compra}</span></b>
+       `
+     })
+   }
+window.onload = officialDolarSell()
+function officialDolarSell() {
+  var officialVenta = document.getElementById("dolar-oficial-hoy-venta")
+  fetch(API_URL)
+     .then(Response => Response.json())
+     .then(data => {
+       console.log(data.result)
+       officialVenta.innerHTML += `
+       <b><span id="dolar-oficial-hoy-venta">${data[0].casa.venta}</span></b>
+       `
+     })
+   }
+window.onload = SellBlue()
+function SellBlue() {
+  var blueVenta = document.getElementById("dolar-blue-hoy-venta")
+  fetch(API_URL)
+     .then(Response => Response.json())
+     .then(data => {
+       console.log(data.result)
+       blueVenta.innerHTML += `
+       <b>$<span id="dolar-blue-hoy-venta">${data[1].casa.venta}</span></b>
+       `
+     })
+   }
 window.onload = BuyBlue()
 function BuyBlue() {
- var buy = document.getElementById("dolar-blue-hoy-compra")
+ var blueCompra = document.getElementById("dolar-blue-hoy-compra")
  fetch(API_URL)
     .then(Response => Response.json())
     .then(data => {
       console.log(data.result)
-      buy.innerHTML += `
-      <b>$<span id="dolar-blue-hoy-compra">${data[1].casa.venta}</span></b>
+      blueCompra.innerHTML += `
+      <b>$<span id="dolar-blue-hoy-compra">${data[1].casa.compra}</span></b>
       `
     })
   }
+  window.onload = ContadoConLiqui()
+  function ContadoConLiqui() {
+    var ContLiqui = document.getElementById("contado-referencia")
+    fetch(API_URL)
+       .then(Response => Response.json())
+       .then(data => {
+         console.log(data.result)
+         ContLiqui.innerHTML += `
+         <b>$<span id="contado-referencia">${data[3].casa.venta}</span></b>
+         `
+       })
+     }
+
+  
 function updateDesktop(data) {}
 
 // TODO:
