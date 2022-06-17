@@ -90,7 +90,7 @@ function BuyBlue() {
       <b>$<span id="dolar-blue-hoy-compra">${data[1].casa.compra}</span></b>
       `
     })
- HEAD
+ 
   }
   window.onload = ContadoConLiqui()
   function ContadoConLiqui() {
