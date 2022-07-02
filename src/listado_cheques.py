@@ -20,6 +20,8 @@
 
 # Defino librerias a utilizar
 import csv
+import datetime as dt
+from tkinter.filedialog import Open
 
 # Defino constantes y variables
 opciones = ""
@@ -30,6 +32,7 @@ print("1. Cargar un nuevo cheque")
 print("3. Salir")
 ""
 runtime = True
+datetime = dt.date.today()
 
 # defino funciones
 
@@ -60,6 +63,15 @@ def filtrarCSV(filters):
     print(f"Se encontraron {len(busqueda)} de cheques")
     return busqueda
 
+def grabarCSV(dni, busqueda):
+    file = open(dni+"_"+datetime+".csv", "w")
+    csvfile = csv.writer(file)
+    for row in busqueda:
+        csvfile.writerow([row['NroCheque'], row["CodigoBanco"], row["CodigoSucursal"],
+        row["NumeroCuentaOrigen"], row["NumeroCuentaDestino"], row["Valor"],
+        row["FechaOrigen"], row["FechaPago"], row["DNI"], row["Tipo"], row["Estado"]])
+    file.close()
+    print("El archivo CSV se gravo correctamente.")
 
 if __name__ == "__main__":
     while runtime:
@@ -71,15 +83,20 @@ if __name__ == "__main__":
             salida = input("Elija si desea recibir la salida por pantalla o CSV: ")
             tipo = input("Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: ")
             estado = input("Selecciones el estado del cheque PENDIENTE, APROBADO, RECHAZADO (Opcional): ")
-            rango = input("Ingrese el rango de fechas en el formato xx-xx-xxxx:yy-yy-yyyy (Opcional): ")
-
-            filters = [lambda cheque: cheque["DNI"] == dni, lambda cheque: estado.upper() in cheque["Estado"].upper(),]
-
+            rango = input("Ingrese el rango de fechas en el formato xx-xx-xxxx:yy-yy-yyyy (Opcional): ")     
+            filters = [lambda cheque: cheque["DNI"] == dni, lambda cheque: estado.upper() in cheque["Estado"].upper(), lamda cheque: cheque['Tipo'] == tipo]
+            print(urlfile, dni, tipo, salida)
             try:
                 resultado = filtrarCSV(filters)
-                print(resultado)
-            except:
-                print("No se encontraron resultados")
+                if salida == "PANTALLA":
+                    print(resultado)
+                elif salida == "CSV":
+                    grabarCSV(resultado)
+                else:
+                    print("Opcion invalida")
+            except Exception as error: 
+                print("ingreso un dni erroneo")
+                print(error)
             continue
 
         else:
