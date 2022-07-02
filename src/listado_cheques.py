@@ -40,7 +40,6 @@ datetime = dt.date.today()
 def readFile(urlfile):
     cheques = []
     file = open(urlfile, "r")
-    print(file)
     csvfile = csv.reader(file)
     for row in csvfile:
         if row != []:
@@ -53,16 +52,15 @@ def readFile(urlfile):
     return cheques
 
 
-def buscarPorDni(dni, tipo):
+def filtrarCSV(filters):
     busqueda = []
-    cantidad = 0
     cheques = readFile(urlfile)
+    
     for cheque in cheques:
-        if cheque['DNI'] == dni and cheque['Tipo'] == tipo:
-            cantidad += 1
-            print("cheque encontrado")
+        if all(f(cheque) for f in filters):
             busqueda.append(cheque)
-    print(f"Se encontraron {cantidad} de cheques")
+
+    print(f"Se encontraron {len(busqueda)} de cheques")
     return busqueda
 
 def grabarCSV(dni, busqueda):
@@ -80,13 +78,16 @@ if __name__ == "__main__":
         print(opciones)
         op = input()
         if op == "1":
-            urlfile = input("Ingrese el nombre del archivo que contiene los cheques: ")
-            dni = input("Ingrese el dni del usuario a consultar: ")
-            tipo = input("Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: ")
+            urlfile = input("Ingrese el path del archivo: ")
+            dni = input("Ingrese el DNI del usuario a consultar: ")
             salida = input("Elija si desea recibir la salida por pantalla o CSV: ")
+            tipo = input("Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: ")
+            estado = input("Selecciones el estado del cheque PENDIENTE, APROBADO, RECHAZADO (Opcional): ")
+            rango = input("Ingrese el rango de fechas en el formato xx-xx-xxxx:yy-yy-yyyy (Opcional): ")     
+            filters = [lambda cheque: cheque["DNI"] == dni, lambda cheque: estado.upper() in cheque["Estado"].upper(), lamda cheque: cheque['Tipo'] == tipo]
             print(urlfile, dni, tipo, salida)
             try:
-                resultado = buscarPorDni(dni, tipo)
+                resultado = filtrarCSV(filters)
                 if salida == "PANTALLA":
                     print(resultado)
                 elif salida == "CSV":
