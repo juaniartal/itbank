@@ -50,12 +50,12 @@ def readFile(urlfile):
     return cheques
 
 
-def buscarPorDni(dni, tipo):
+def buscarPorDni(dni):
     busqueda = []
     cantidad = 0
     cheques = readFile(urlfile)
     for cheque in cheques:
-        if cheque["DNI"] == dni & cheques["Tipo" == tipo]:
+        if cheque["DNI"] == dni:
             cantidad += 1
             print("cheque encontrado")
             busqueda.append(cheque)
@@ -68,13 +68,10 @@ if __name__ == "__main__":
         print(opciones)
         op = input()
         if op == "1":
-            urlfile = input(
-                "Ingrese el nombre del archivo que contiene los cheques: /n")
-            dni = input("Ingrese el dni del usuario a consultar: /n")
-            tipo = input(
-                "Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: /n")
-            salida = input(
-                "Elija si desea recibir la salida por pantalla o CSV: /n")
+            urlfile = input("Ingrese el nombre del archivo que contiene los cheques: ")
+            dni = input("Ingrese el dni del usuario a consultar: ")
+            tipo = input("Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: ")
+            salida = input("Elija si desea recibir la salida por pantalla o CSV: ")
             try:
                 resultado = buscarPorDni(dni)
                 print(resultado)
