@@ -11,6 +11,7 @@ SUCCESS: int = 1
 
 SALIDAS = ["PANTALLA", "CSV"]
 ESTADOS = ["PENDIENTE", "APROBADO", "RECHAZADO", ""]
+TIPOS = ["EMITIDO", "DEPOSITADO"]
 
 
 # El orden de los argumentos son los siguientes:
@@ -31,6 +32,9 @@ def obtener_parametros():
 
     tipo = input(
         "Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: ")
+    while tipo not in (TIPOS):
+       tipo = input(
+        "Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: ")     
 
     estado = input(
         "Selecciones el estado del cheque PENDIENTE, APROBADO, RECHAZADO (Opcional): ")
