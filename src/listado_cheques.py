@@ -4,9 +4,9 @@ from pandas import DataFrame, read_csv
 from datetime import datetime
 
 
-ERROR : int = -1
-OK : int  = 0
-SUCCESS : int  = 1
+ERROR: int = -1
+OK: int = 0
+SUCCESS: int = 1
 
 
 SALIDAS = ["PANTALLA", "CSV"]
@@ -19,7 +19,7 @@ ESTADOS = ["PENDIENTE", "APROBADO", "RECHAZADO", ""]
 #    c. Salida: PANTALLA o CSV
 #    d. Tipo de cheque: EMITIDO o DEPOSITADO
 #    e. Estado del cheque: PENDIENTE, APROBADO, RECHAZADO. (Opcional)
-#    f. Rango fecha: xx-xx-xxxx:yy-yy-yyyy (Opcional)    
+#    f. Rango fecha: xx-xx-xxxx:yy-yy-yyyy (Opcional)
 def obtener_parametros():
     urlfile = input("\nIngrese el path del archivo: ")
 
@@ -29,13 +29,17 @@ def obtener_parametros():
     while salida not in (SALIDAS):
         salida = input("Elija si desea recibir la salida por PANTALLA o CSV: ")
 
-    tipo = input("Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: ")
+    tipo = input(
+        "Selecciones el tipo de cheque a buscar EMITIDO o DEPOSITADO: ")
 
-    estado = input("Selecciones el estado del cheque PENDIENTE, APROBADO, RECHAZADO (Opcional): ")
+    estado = input(
+        "Selecciones el estado del cheque PENDIENTE, APROBADO, RECHAZADO (Opcional): ")
     while estado not in (ESTADOS):
-        estado = input("Selecciones el estado del cheque PENDIENTE, APROBADO, RECHAZADO (Opcional): ")
+        estado = input(
+            "Selecciones el estado del cheque PENDIENTE, APROBADO, RECHAZADO (Opcional): ")
 
-    rango = input("Ingrese el rango de fechas en el formato xx-xx-xxxx:yy-yy-yyyy (Opcional): ")    
+    rango = input(
+        "Ingrese el rango de fechas en el formato xx-xx-xxxx:yy-yy-yyyy (Opcional): ")
 
     return urlfile, dni, salida, tipo, estado, rango
 
@@ -44,15 +48,16 @@ def obtener_parametros():
 # los valores que se tienen, y si “Salida” es CSV se deberá exportar a un csv
 # con las siguientes condiciones:
 # a. El nombre de archivo tiene que tener el formato <DNI><TIMESTAMPS ACTUAL>.csv
-# b. Se tiene que exportar las dos fechas, el valor del cheque y la cuenta  
-def exportar_cheques(dni: int, cheques: DataFrame, formato_de_salida: str):    
+# b. Se tiene que exportar las dos fechas, el valor del cheque y la cuenta
+def exportar_cheques(dni: int, cheques: DataFrame, formato_de_salida: str):
     match formato_de_salida.upper():
         case "PANTALLA":
             print(cheques)
 
-        case "CSV":            
+        case "CSV":
             timestamp = datetime.timestamp(datetime.now())
-            cheques.to_csv(str(dni) + "_" + str(timestamp) + ".csv", index = False)
+            cheques.to_csv(str(dni) + "_" + str(timestamp) +
+                           ".csv", index=False)
 
         case _:
             raise("No se puede exportar los cheques según: " + formato_de_salida)
@@ -68,21 +73,21 @@ def verificar_cheques(cheques_del_usuario: DataFrame):
         col_NroCheque = cheques["NroCheque"]
         if any(len(cheques[col_NroCheque == n]) > 1 for n in col_NroCheque.unique()):
             return ERROR
-    
+
     return OK
 
 
-# Si el estado del cheque no se pasa, se deberán imprimir 
+# Si el estado del cheque no se pasa, se deberán imprimir
 # los cheques sin filtrar por estado
-def filtrar_por_estado(cheques: DataFrame, estado : str):
+def filtrar_por_estado(cheques: DataFrame, estado: str):
     if estado == "":
         return cheques
     else:
-        return cheques[cheques["Estado"] == estado.upper()]    
+        return cheques[cheques["Estado"] == estado.upper()]
 
 
 def obtener_cheques_del_usuario(dni: int, urlfile: str):
-    cheques : DataFrame
+    cheques: DataFrame
     try:
         cheques = read_csv(urlfile)
     except Exception as error:
@@ -96,7 +101,7 @@ def consultar_cheques():
     urlfile, dni, formato_de_salida, _, estado, _ = obtener_parametros()
 
     cheques_del_usuario = obtener_cheques_del_usuario(dni, urlfile)
-    
+
     if verificar_cheques(cheques_del_usuario) == OK:
         cheques_filtrados = filtrar_por_estado(cheques_del_usuario, estado)
         exportar_cheques(dni, cheques_filtrados, formato_de_salida)
@@ -109,17 +114,17 @@ def consultar_cheques():
 
 ###############################################################################
 
-runtime : Runtime = Runtime()
+runtime: Runtime = Runtime()
 
-options : list[Entry] = [
-    Entry("Consultar cheques", lambda : consultar_cheques()),
-    Entry("Salir", lambda : runtime.stop())
+options: list[Entry] = [
+    Entry("Consultar cheques", lambda: consultar_cheques()),
+    Entry("Salir", lambda: runtime.stop())
 ]
 
 if __name__ == "__main__":
     runtime.start()
 
-    menu : Menu = Menu()
+    menu: Menu = Menu()
 
     menu.load(options=options)
 
@@ -130,11 +135,11 @@ if __name__ == "__main__":
         print("\nPor favor seleccione una de las opciones:", end="\n")
 
         menu.render()
-        
+
         print("Selección: ", end="")
 
         if menu.select() != ERROR:
             if menu.execute() != ERROR:
-                continue   
+                continue
 
         runtime.stop()
