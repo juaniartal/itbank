@@ -8,8 +8,10 @@ ERROR : int = -1
 OK : int  = 0
 SUCCESS : int  = 1
 
+
 SALIDAS = ["PANTALLA", "CSV"]
 ESTADOS = ["PENDIENTE", "APROBADO", "RECHAZADO", ""]
+
 
 # El orden de los argumentos son los siguientes:
 #    a. Nombre del archivo csv.
