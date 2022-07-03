@@ -1,11 +1,7 @@
-from email.policy import default
-from select import select
-from this import d
 from menu import Menu, Entry
 from runtime import Runtime
 from pandas import DataFrame, read_csv
 from datetime import datetime
-import csv
 
 
 ERROR : int = -1
