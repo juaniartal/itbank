@@ -1,5 +1,9 @@
 from typing import Callable
 
+ERROR : int = -1
+OK : int  = 0
+SUCCESS : int  = 1
+
 class Entry:
     identifier : str
     handler : Callable[[], int]
@@ -27,12 +31,15 @@ class Menu:
             print(str(i) + ": " + option.identifier)
 
     def select(self):
-        index = int(input())
-
+        index : int
+        
         try:
+            index = int(input())
             self.selection = self.options[index]
-        except Exception as exception:
-            raise(exception)
+            return OK
+
+        except Exception:
+            return ERROR
 
     def execute(self):
         return self.selection.handler()
