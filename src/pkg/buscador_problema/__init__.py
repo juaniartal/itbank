@@ -1,11 +1,5 @@
-from multiprocessing import Event
-# No puse que lo importe directamente por que no se si vamos a crear carpetas y todo
-# abriguense
-from .evento import Evento
-# crear los eventos
-from .cliente import Cliente
-from .razon import *
-# crear razones
+from ..cliente import Cliente
+#from ..evento import Evento
 import importlib
 
 
@@ -39,6 +33,7 @@ class BuscadorProblema:
             }
         }
 
+        """
         def getResultado(self, evento: Evento):
             explicacion = ""
             if evento.estado == Evento.RECHAZADA:
@@ -54,3 +49,4 @@ class BuscadorProblema:
                 "fecha": evento.fecha,
                 "monto": evento.monto
             }
+        """
