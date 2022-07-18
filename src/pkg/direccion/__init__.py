@@ -1,16 +1,16 @@
 class Direccion:
     calle: str = ""
-    nombre: str = ""
+    numero: str = ""
     ciudad: str = ""
     provincia: str = ""
     pais: str = ""
     
 
     def __init__(
-        self, calle: str, nombre: str, ciudad: str, provincia: str, pais: str
+        self, calle: str, numero: str, ciudad: str, provincia: str, pais: str
     ) -> None:
         self.calle = calle
-        self.nombre = nombre
+        self.numero = numero
         self.ciudad = ciudad
         self.provincia = provincia
         self.pais = pais
@@ -20,7 +20,11 @@ class Direccion:
     ) -> bool:
         return True
 
-    def outputAsLabel(
-        self,
-    ) -> str:
-        return ""
+    def __str__(self) -> str:
+        return "{calle} {numero}, {ciudad}, {provincia}, {pais}.".format(
+            calle=self.calle,
+            numero=self.numero,
+            ciudad=self.ciudad,
+            provincia=self.provincia,
+            pais=self.pais,
+        )
