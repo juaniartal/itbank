@@ -1,6 +1,7 @@
 from ..cuenta import Cuenta, LIMITE_MAXAXIMO_DE_TRANSFERENCIA
 from ..direccion import Direccion
-
+from ..tarjeta import EmisorTarjeta, Tarjeta, TipoTarjeta
+from ..chequera import Chequera
 
 CLASSIC = "CLASSIC"
 GOLD = "GOLD"
@@ -9,6 +10,12 @@ BLACK = "BLACK"
 
 class Cliente:
     cuentas: list[Cuenta]
+    
+    tarjetas_de_credito_permitidas: int
+    tarjetas: list[Tarjeta]
+
+    chequeras_permitidas: int
+    chequeras : list[Chequera]
 
     direccion: Direccion
 
@@ -20,6 +27,8 @@ class Cliente:
     def __init__(
         self,
         cuentas: list[Cuenta],
+        tarjetas_de_credito_permitidas: int,
+        chequeras_permitidas: int,
         direccion: Direccion,
         nombre: str,
         apellido: str,
@@ -27,6 +36,10 @@ class Cliente:
         dni: str,
     ) -> None:
         self.cuentas = cuentas
+        self.tarjetas = []
+        self.tarjetas_de_credito_permitidas = tarjetas_de_credito_permitidas
+        self.chequeras_permitidas = chequeras_permitidas
+        self.chequeras = []        
         self.direccion = direccion
         self.nombre = nombre
         self.apellido = apellido
@@ -66,6 +79,8 @@ class ClienteClassic(Cliente):
 
         super().__init__(
             cuentas=cuentas,
+            tarjetas_de_credito_permitidas=0,
+            chequeras_permitidas=0,
             direccion=direccion,
             nombre=nombre,
             apellido=apellido,
@@ -108,8 +123,11 @@ class ClienteGold(Cliente):
 
         cuentas.append(caja_de_ahorro_en_dolares)
 
+
         super().__init__(
             cuentas=cuentas,
+            tarjetas_de_credito_permitidas=1,
+            chequeras_permitidas=1,
             direccion=direccion,
             nombre=nombre,
             apellido=apellido,
@@ -164,6 +182,8 @@ class ClienteBlack(Cliente):
 
         super().__init__(
             cuentas=cuentas,
+            tarjetas_de_credito_permitidas=5,
+            chequeras_permitidas=2,
             direccion=direccion,
             nombre=nombre,
             apellido=apellido,
