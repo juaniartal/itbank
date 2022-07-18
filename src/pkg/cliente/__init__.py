@@ -1,7 +1,7 @@
+from ..chequera import Chequera
 from ..cuenta import Cuenta, LIMITE_MAXAXIMO_DE_TRANSFERENCIA
 from ..direccion import Direccion
-from ..tarjeta import EmisorTarjeta, Tarjeta, TipoTarjeta
-from ..chequera import Chequera
+from ..tarjeta import Tarjeta
 
 CLASSIC = "CLASSIC"
 GOLD = "GOLD"
@@ -10,12 +10,12 @@ BLACK = "BLACK"
 
 class Cliente:
     cuentas: list[Cuenta]
-    
+
     tarjetas_de_credito_permitidas: int
     tarjetas: list[Tarjeta]
 
     chequeras_permitidas: int
-    chequeras : list[Chequera]
+    chequeras: list[Chequera]
 
     direccion: Direccion
 
@@ -39,7 +39,7 @@ class Cliente:
         self.tarjetas = []
         self.tarjetas_de_credito_permitidas = tarjetas_de_credito_permitidas
         self.chequeras_permitidas = chequeras_permitidas
-        self.chequeras = []        
+        self.chequeras = []
         self.direccion = direccion
         self.nombre = nombre
         self.apellido = apellido
@@ -117,12 +117,11 @@ class ClienteGold(Cliente):
             saldo_descubierto_disponible=10000,
         )
 
-        caja_de_ahorro_en_dolares: Cuenta = Cuenta(0, 0, 0, 0, 0,)
+        caja_de_ahorro_en_dolares: Cuenta = Cuenta(0, 0, 0, 0, 0, )
 
         cuentas.append(cuenta_corriente)
 
         cuentas.append(caja_de_ahorro_en_dolares)
-
 
         super().__init__(
             cuentas=cuentas,
@@ -172,7 +171,7 @@ class ClienteBlack(Cliente):
             saldo_descubierto_disponible=10000,
         )
 
-        caja_de_ahorro_en_dolares: Cuenta = Cuenta(0, 0, 0, 0, 0,)
+        caja_de_ahorro_en_dolares: Cuenta = Cuenta(0, 0, 0, 0, 0, )
 
         cuentas.append(caja_de_ahorro_en_pesos)
 
@@ -198,4 +197,4 @@ class ClienteBlack(Cliente):
         return False
 
     def puede_comprar_dolar(self) -> bool:
-        return False
+        return True
