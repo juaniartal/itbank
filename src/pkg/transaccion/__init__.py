@@ -1,7 +1,7 @@
 
-class Evento:
+class Transaccion:
     estado: str
-    tipo = str
+    tipo : str
     cuentaNumero: int
     cupoDiarioRestante: float
     monto: float
