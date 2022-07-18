@@ -1,6 +1,6 @@
-from pkg.transaccion import Transaccion
 from ..cliente import Cliente
-from ..razones import Razones
+from ..transaccion import Transaccion
+
 
 class HtmlProcessor:
     def __init__(self) -> None:
@@ -25,10 +25,10 @@ class HtmlProcessor:
                 ),
                 estado=e.estado,
                 monto=e.monto,
-                razon=Razones.justificar(Cliente, Transaccion),
+                razon=e.justificar(cliente),
             )
 
-        html = """              
+        html = """
           <html lang="en">
             <head>
               <meta charset="UTF-8" />
@@ -43,14 +43,15 @@ class HtmlProcessor:
               />
               <link rel="stylesheet" href="index.css">
             </head>
-            <body class="container">
+            <body>
+             <main class="container mt-5">
               <div class="">
                   <h1>{apellido}, {nombre}</h1>
                   <div>Numero cliente: {numero} </div>
                   <div> DNI: {dni} </div>
                   <div> Direccion: {direccion}  </div>
-              </div> 
-              <table class="table">
+              </div>
+              <table class="table mt-3">
                 <thead>
                   <tr>
                     <th scope="col">Fecha</th>
@@ -62,6 +63,7 @@ class HtmlProcessor:
                 </thead>
                 {transacciones}
               </table>
+              </main>
             </body>
           </html>
         """.format(
@@ -73,6 +75,6 @@ class HtmlProcessor:
             transacciones=html_transacciones,
         )
 
-        archivo = open("../index.html", "w")
+        archivo = open("./index.html", "w+")
         archivo.write(html)
         archivo.close()
