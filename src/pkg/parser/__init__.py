@@ -1,50 +1,110 @@
-from typing import Tuple
-#from .evento import Evento
 from ..cliente import *
+from ..transaccion import Transaccion
 import json
 
 
 class Parser:
-    def execute(self, file_name: str):
-        transacciones = []
-        with open(file_name) as jsonFile:
-            eventos = json.load(jsonFile)
-            cliente = self.parsearCliente(eventos)
-            for t in eventos["transacciones"]:
-                # utilizamos una forma simple para crear el objeto
-                #transacciones.append(Evento(**t))
-                continue
-            return (cliente, transacciones)
+    target_json_file: str
 
+    cliente: Cliente
 
-    def parsearCliente(self, datos) -> Cliente:
-        tipo = datos["tipo"]
+    transacciones: list[Transaccion]
 
-        if (tipo == CLASSIC):
-            cliente = ClienteClassic(
-                direccion=Direccion("", "", "", "", "",),
-                nombre=datos["nombre"],
-                apellido=datos["apellido"],
-                numero=datos["numero"],
-                dni=datos["DNI"],
+    def __init__(self, target_json_file: str) -> None:
+        self.target_json_file = target_json_file
+        self.transacciones = list()
+        self.cliente = Cliente(
+            [],
+            0,
+            0,
+            Direccion(
+                "",
+                "",
+                "",
+                "",
+                "",
+            ),
+            "",
+            "",
+            "",
+            "",
+        )
+
+    def execute(self):
+        with open(self.target_json_file) as jsonFile:
+            try:
+                data = json.load(jsonFile)
+            except Exception as error:
+                print(error)
+                raise Exception("Failed to load " + self.target_json_file)
+
+            try:
+                self.__parsearCliente(data)
+            except Exception as error:
+                print(error)
+                raise Exception("Failed to parse Cliente from " + self.target_json_file)
+
+            try:
+                self.__parsearTransacciones(data)
+            except Exception as error:
+                print(error)
+                raise Exception(
+                    "Failed to parse Transacciones from " + self.target_json_file
+                )
+
+    def __parsearTransacciones(self, data: str) -> None:
+        for transaccion in data["transacciones"]:
+            self.transacciones.append(
+                Transaccion(
+                    estado=transaccion["estado"],
+                    tipo=transaccion["tipo"],
+                    cuentaNumero=transaccion["cuentaNumero"],
+                    cupoDiarioRestante=transaccion["cupoDiarioRestante"],
+                    monto=transaccion["monto"],
+                    fecha=transaccion["fecha"],
+                    numero=transaccion["numero"],
+                    saldoEnCuenta=transaccion["saldoEnCuenta"],
+                    totalTarjetasDeCreditoActualmente=transaccion[
+                        "totalTarjetasDeCreditoActualmente"
+                    ],
+                    totalChequerasActualmente=transaccion["totalChequerasActualmente"],
+                )
             )
-        elif (tipo == GOLD):
-            cliente = ClienteGold(
-                direccion=Direccion("", "", "", "", "",),
-                nombre=datos["nombre"],
-                apellido=datos["apellido"],
-                numero=datos["numero"],
-                dni=datos["DNI"],                
+
+    def __parsearCliente(self, data) -> None:
+        direccion: Direccion = Direccion(
+            calle=data["direccion"]["calle"],
+            numero=data["direccion"]["numero"],
+            ciudad=data["direccion"]["ciudad"],
+            provincia=data["direccion"]["provincia"],
+            pais=data["direccion"]["pais"],
+        )
+   
+        tipo: str = data["tipo"]
+
+        if tipo == CLASSIC:
+            self.cliente = ClienteClassic(
+                direccion=direccion,
+                nombre=data["nombre"],
+                apellido=data["apellido"],
+                numero=data["numero"],
+                dni=data["dni"],
             )
-        elif (tipo == BLACK):
-            cliente = ClienteBlack(
-                direccion=Direccion("", "", "", "", "",),
-                nombre=datos["nombre"],
-                apellido=datos["apellido"],
-                numero=datos["numero"],
-                dni=datos["DNI"],
+        elif tipo == GOLD:
+            self.cliente = ClienteGold(
+                direccion=direccion,
+                nombre=data["nombre"],
+                apellido=data["apellido"],
+                numero=data["numero"],
+                dni=data["dni"],
+            )
+        elif tipo == BLACK:
+            self.cliente = ClienteBlack(
+                direccion=direccion,
+                nombre=data["nombre"],
+                apellido=data["apellido"],
+                numero=data["numero"],
+                dni=data["dni"],
             )
         else:
             raise Exception("Tipo de cliente no existe")
-
-        return cliente
