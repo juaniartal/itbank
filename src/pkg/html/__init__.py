@@ -44,14 +44,14 @@ class HtmlProcessor:
               <link rel="stylesheet" href="index.css">
             </head>
             <body>
-             <main class="container mt-5">
-              <div class="">
+             <main class="container mt-5 py-5">
+              <div class="mb-4">
                   <h1>{apellido}, {nombre}</h1>
-                  <div>Numero cliente: {numero} </div>
-                  <div> DNI: {dni} </div>
-                  <div> Direccion: {direccion}  </div>
+                  <div><b>Numero cliente</b>: {numero} </div>
+                  <div><b>DNI</b>: {dni} </div>
+                  <div><b>Direccion</b>: {direccion}  </div>
               </div>
-              <table class="table mt-3">
+              <table class="table table-striped table-hover mt-3">
                 <thead>
                   <tr>
                     <th scope="col">Fecha</th>
