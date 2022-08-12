@@ -19,3 +19,14 @@ class Cliente(models.Model):
     class Meta:
        managed = False
        db_table = 'CLIENTES'
+
+class Cuenta(models.Model):
+    id = models.IntegerField(primary_key=True)
+    cliente_id = models.IntegerField() 
+    balance = models.IntegerField()
+    iban = models.CharField(max_length=200)
+    tipo_cuenta_id = models.IntegerField()
+    
+    class Meta:
+       managed = False
+       db_table = 'CUENTAS'
