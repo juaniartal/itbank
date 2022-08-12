@@ -57,3 +57,16 @@ class Prestamo(models, Model):
     class Meta:
         managed = False
         db_table = 'PRESTAMO'        
+
+class Tarjeta(modela, Model):
+    numero = models.IntegerField(primary_key=True)
+    cvv = models.CharField(max_length=200)
+    fecha_otorgamiento = models.CharField(max_length=200)
+    fecha_expiracion = models.CharField(max_length=200)
+    tipo_id = models.CharField(max_length=200)
+    customer_id = models.IntegerField()
+    tipo_tarjeta_id = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'TARJETAS'
