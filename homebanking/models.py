@@ -30,3 +30,18 @@ class Cuenta(models.Model):
     class Meta:
        managed = False
        db_table = 'CUENTAS'
+        
+     
+class Empleado(models.Model):
+    id = models.IntegerField(primary_key= True)
+    name = models.CharField(max_length=200)
+    surname = models.CharField(max_length=200)
+    hire_date = models.DateTimeField(auto_now=True)
+    dni = models.IntegerField()
+    branch_id = models.IntegerField()
+    direccion_id = models.ForeignKey()
+    
+    
+    class Meta:
+        managed = False
+        db_table = 'EMPLEADOS'
