@@ -46,7 +46,19 @@ class Empleado(models.Model):
         managed = False
         db_table = 'EMPLEADOS'
 
-        
+class Movimientos(models.Model):
+    transaction_id = models.IntegerField(primary_key= True)
+    account_id = models.IntegerField()
+    operation_tipe = models.CharField(max_length=200)
+    amount = models.IntegerField(auto_now=True)
+    changet_at = models.CharField()
+
+    
+    class Meta:
+        managed = False
+        db_table = 'MOVIMIENTOS'
+         
+
 class Prestamo(models, Model):
     id = models.IntegerField(primary_key=True)
     type = models.CharField(max_length=200)
