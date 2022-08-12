@@ -45,3 +45,15 @@ class Empleado(models.Model):
     class Meta:
         managed = False
         db_table = 'EMPLEADOS'
+
+        
+class Prestamo(models, Model):
+    id = models.IntegerField(primary_key=True)
+    type = models.CharField(max_length=200)
+    date = models.CharField(max_length=200)
+    total = models.IntegerField()
+    customer_id = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'PRESTAMO'        
