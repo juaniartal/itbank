@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Sign In{% endblock %}
+
+{% block body-tag %}
+    style="
+    background: url({% static "homebanking/images/andrea-cau-nV7GJmSq3zc-unsplash.jpg" %});
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    "
+    class="d-flex flex-column"
+{% endblock %}
+
+{% block main %}
+    <main class="mt-auto">
+        <section>
+            <div
+                    id="card"
+                    class="card container p-3 mx-auto"
+                    style="max-width: max-content"
+            >
+                <div class="card-body text-center">
+                    <a class="text-dark" href="index.html">
+                        <h3>ITBANK</h3>
+                    </a>
+                    <h4 class="card-title text-center mb-3 text-muted">
+                        Online Banking
+                    </h4>
+                    <div class="card-text">
+                        <form class="mt-0">
+                            <!-- Username Input -->
+                            <div class="form-outline mb-2">
+                                <input
+                                        type="email"
+                                        id="usernameInput"
+                                        class="form-control"
+                                        placeholder="your@mail.com"
+                                />
+                                <label class="form-label" for="usernameInput">Username</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input
+                                        type="password"
+                                        id="passwordInput"
+                                        class="form-control"
+                                />
+                                <label class="form-label" for="passwordInput">Password</label>
+                            </div>
+                            <div class="text-center w-auto">
+                                <button
+                                        type="submit"
+                                        id="boton-sign"
+                                        class="btn btn-primary btn-lg w-100 disabled mb-3"
+                                >
+                                    Sign In
+                                </button>
+                            </div>
+                            <div
+                                    class="container-fluid align-content-start text-start mb-2"
+                            >
+                                <a href="reset_password.html">Forgot username/password?</a>
+                                <br/>
+                                <a href="sign_up.html"> Not Enrolled? Sign Up Now. </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
