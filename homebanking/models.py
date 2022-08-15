@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
 class Cliente(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=200)
@@ -17,49 +18,49 @@ class Cliente(models.Model):
     direccion_id = models.IntegerField()
 
     class Meta:
-       managed = False
-       db_table = 'CLIENTES'
+        managed = False
+        db_table = 'CLIENTES'
+
 
 class Cuenta(models.Model):
     id = models.IntegerField(primary_key=True)
-    cliente_id = models.IntegerField() 
+    cliente_id = models.IntegerField()
     balance = models.IntegerField()
     iban = models.CharField(max_length=200)
     tipo_cuenta_id = models.IntegerField()
-    
+
     class Meta:
-       managed = False
-       db_table = 'CUENTAS'
-        
-     
+        managed = False
+        db_table = 'CUENTAS'
+
+
 class Empleado(models.Model):
-    id = models.IntegerField(primary_key= True)
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=200)
     surname = models.CharField(max_length=200)
     hire_date = models.DateTimeField(auto_now=True)
     dni = models.IntegerField()
     branch_id = models.IntegerField()
     direccion_id = models.ForeignKey()
-    
-    
+
     class Meta:
         managed = False
         db_table = 'EMPLEADOS'
 
+
 class Movimientos(models.Model):
-    transaction_id = models.IntegerField(primary_key= True)
+    transaction_id = models.IntegerField(primary_key=True)
     account_id = models.IntegerField()
     operation_tipe = models.CharField(max_length=200)
     amount = models.IntegerField(auto_now=True)
     changet_at = models.CharField()
 
-    
     class Meta:
         managed = False
         db_table = 'MOVIMIENTOS'
-         
 
-class Prestamo(models, Model):
+
+class Prestamo(models.Model):
     id = models.IntegerField(primary_key=True)
     type = models.CharField(max_length=200)
     date = models.CharField(max_length=200)
@@ -68,9 +69,10 @@ class Prestamo(models, Model):
 
     class Meta:
         managed = False
-        db_table = 'PRESTAMO'        
+        db_table = 'PRESTAMO'
 
-class Tarjeta(modela, Model):
+
+class Tarjeta(models.Model):
     numero = models.IntegerField(primary_key=True)
     cvv = models.CharField(max_length=200)
     fecha_otorgamiento = models.CharField(max_length=200)
