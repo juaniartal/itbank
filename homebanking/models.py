@@ -8,20 +8,6 @@
 from django.db import models
 
 
-class Cliente(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=200)
-    surname = models.CharField(max_length=200)
-    dni = models.IntegerField()
-    dob = models.CharField(max_length=200)
-    branch_id = models.IntegerField()
-    direccion_id = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'CLIENTES'
-
-
 class Cuenta(models.Model):
     id = models.IntegerField(primary_key=True)
     cliente_id = models.IntegerField()
