@@ -1,4 +1,3 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -30,12 +29,12 @@ def register(request: WSGIRequest) -> HttpResponse:
     View function for Register Page of site.
     """
     template_name: str = 'login/register.html'
-    form = RegisterForm()
+    form: RegisterForm = RegisterForm()
     context: dict = {'form': form}
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save_customer()
             return redirect('login')
 
     return render(request, template_name, context)

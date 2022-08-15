@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import TextInput, EmailInput, PasswordInput, CharField
 
+from .models import Cliente
+
 
 class RegisterForm(UserCreationForm):
     """
@@ -33,6 +35,9 @@ class RegisterForm(UserCreationForm):
                                        }),
         }
 
-    def save(self, commit=True):
+    def save_customer(self, commit=True):
         user = super().save(commit=commit)
+        if commit:
+            costumer = Cliente(user=user)
+            costumer.save()
         return user
