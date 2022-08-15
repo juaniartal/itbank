@@ -75,9 +75,15 @@
                                 <br/>
                             </div>
                         </form>
+                        <div class="alert alert-danger" role="alert">
+                            {{ form.error_messages }}
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+{% endblock %}
+
+{% block JS %}
 {% endblock %}

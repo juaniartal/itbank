@@ -32,3 +32,7 @@ class RegisterForm(UserCreationForm):
                                        'placeholder': 'your@mail.com',
                                        }),
         }
+
+    def save(self, commit=True):
+        user = super().save(commit=commit)
+        return user
