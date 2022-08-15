@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -11,6 +12,14 @@ def index(request: WSGIRequest) -> HttpResponse:
     View function for Login Page of site.
     """
     template_name: str = 'login/index.html'
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            return redirect('home')
+
     context: dict = {}
     return render(request, template_name, context)
 

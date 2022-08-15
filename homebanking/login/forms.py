@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import TextInput, EmailInput, PasswordInput, CharField, DecimalField, NumberInput
 
-from .models import Cliente
+from cliente.models import Cliente
 
 
 class RegisterForm(UserCreationForm):
