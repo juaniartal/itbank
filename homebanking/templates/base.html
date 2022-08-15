@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        Itbank Online - {% block title %}Home{% endblock %}
+    </title>
+    <meta
+            name="description"
+            content="ITBANK online; Manage your credit cards, debit cards, mortgages, loans, etc."
+    />
+    <meta
+            name="author"
+            content="Juan Ignacio Artal, Roberto Nicolás Savinelli, Tomas Agustin Sanchez, Femenia Ignacio, Tisera Camila"
+    />
+    <meta
+            name="generator"
+            content="Juan Ignacio Artal, Roberto Nicolás Savinelli, Tomas Agustin Sanchez, Femenia Ignacio, Tisera Camila"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static "homebanking/icons/favicon.ico" %}"/>
+    <!-- MDB -->
+    <link href="{% static "homebanking/css/mdb.min.css" %}" rel="stylesheet"/>
+    <!-- Normalize -->
+    <link rel="stylesheet" href="{% static "homebanking/css/normalize.css" %}"/>
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="{% static "homebanking/css/style.css" %}"/>
+    <!-- Fonts -->
+    <link rel="stylesheet" href={% static "homebanking/css/fonts.css" %}/>
+    <!-- Footer -->
+    <link rel="stylesheet" href="{% static "homebanking/css/footer.css" %}"/>
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    {% block CSS %}{% endblock %}
+</head>
+
+<body {% block body-tag %}{% endblock %}>
+
+{% block main %}
+    <main>
+        <h1>This is a template block</h1>
+        <p>Block should be overwritten.</p>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'includes/footer.html' %}
+{% endblock %}
+
+<!-- MDB -->
+<script type="text/javascript" src={% static "homebanking/js/mdb.min.js" %}></script>
+<!-- Custom JS -->
+{% block JS %}{% endblock %}
+</body>
+
+</html>
