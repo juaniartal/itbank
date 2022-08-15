@@ -39,6 +39,24 @@
                                 <label class="form-label" for="id_username">{{ form.username.label }}*</label>
                             </div>
 
+                            <!-- Name Input -->
+                            <div class="form-outline mb-2">
+                                {{ form.first_name }}
+                                <label class="form-label" for="id_first_name">{{ form.first_name.label }}*</label>
+                            </div>
+
+                            <!-- Last Name Input -->
+                            <div class="form-outline mb-2">
+                                {{ form.last_name }}
+                                <label class="form-label" for="id_last_name">{{ form.last_name.label }}*</label>
+                            </div>
+
+                            <!-- Last Name Input -->
+                            <div class="form-outline mb-2">
+                                {{ form.dni }}
+                                <label class="form-label" for="id_dni">{{ form.dni.label }}*</label>
+                            </div>
+
                             <!-- Email Input -->
                             <div class="form-outline mb-2">
                                 {{ form.email }}
@@ -75,9 +93,6 @@
                                 <br/>
                             </div>
                         </form>
-                        <div class="alert alert-danger" role="alert">
-                            {{ form.error_messages }}
-                        </div>
                     </div>
                 </div>
             </div>
