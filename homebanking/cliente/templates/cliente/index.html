@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Me{% endblock %}
+
+{% block body-tag %}
+    style="height: 100vh;"
+    class="d-flex flex-column"
+{% endblock %}
+
+{% block main %}
+    <main class="mt-3">
+        <section>
+            <div class="container">
+                <h1> Hello {{ user.first_name }} (ID {{ costumer.dni }})!</h1>
+                <a href="{% url 'logout' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+                    Log Out
+                </a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

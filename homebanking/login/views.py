@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -11,17 +11,29 @@ def index(request: WSGIRequest) -> HttpResponse:
     """
     View function for Login Page of site.
     """
-    template_name: str = 'login/index.html'
+    if request.user.is_authenticated:
+        return redirect('me')
 
+    template_name: str = 'login/index.html'
+    context: dict = {}
     if request.method == 'POST':
+
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            return redirect('home')
+            nxt = request.GET.get("next", 'me')
+            login(request, user)
+            return redirect(nxt)
+        else:
+            context: dict = {'error': 'Invalid username or password'}
 
-    context: dict = {}
     return render(request, template_name, context)
+
+
+def log_out(request: WSGIRequest) -> HttpResponse:
+    logout(request)
+    return redirect('login')
 
 
 def reset(request: WSGIRequest) -> HttpResponse:
