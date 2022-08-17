@@ -23,17 +23,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!-- Favicon -->
-    <link rel="icon" href="{% static "homebanking/icons/favicon.ico" %}"/>
+    <link rel="icon" href="{% static 'homebanking/icons/favicon.ico' %}"/>
     <!-- MDB -->
-    <link href="{% static "homebanking/css/mdb.min.css" %}" rel="stylesheet"/>
+    <link href="{% static 'homebanking/css/mdb.min.css' %}" rel="stylesheet"/>
     <!-- Normalize -->
-    <link rel="stylesheet" href="{% static "homebanking/css/normalize.css" %}"/>
+    <link rel="stylesheet" href="{% static 'homebanking/css/normalize.css' %}" />
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="{% static 'homebanking/css/navbar.css' %}" />
+    <!-- Main Tag CSS -->
+    <link rel="stylesheet" href="{% static 'homebanking/css/main.css' %}" />
     <!-- Custom Style CSS -->
-    <link rel="stylesheet" href="{% static "homebanking/css/style.css" %}"/>
+    <link rel="stylesheet" href="{% static 'homebanking/css/style.css' %}" />
     <!-- Fonts -->
-    <link rel="stylesheet" href={% static "homebanking/css/fonts.css" %}/>
+    <link rel="stylesheet" href="{% static 'homebanking/css/fonts.css' %}" />
     <!-- Footer -->
-    <link rel="stylesheet" href="{% static "homebanking/css/footer.css" %}"/>
+    <link rel="stylesheet" href="{% static 'homebanking/css/footer.css' %}" />
+    <!--Layout Cotizaciones-->
+    <link rel="stylesheet" href="{% static 'homebanking/css/layout.css' %}" />
     <!-- Font Awesome -->
     <link
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -166,7 +172,7 @@
         <!-- Dollar Official -->
         <div class="card">
           <h5 class="card-title-dollar">
-            <img src="assets/icons/dolar.png" id="icon-dolar" />DOLAR OFICIAL
+            <img src="{% static 'homebanking/icons/dolar.png' %}" id="icon-dolar" />DOLAR OFICIAL
           </h5>
           <div class="card-body-dollar">
             <span class="navbar-text header-navigation me-3">
@@ -181,7 +187,7 @@
         <!-- Dollar Blue -->
         <div class="card">
           <h5 class="card-title-dollar">
-            <img src="assets/icons/dolarBlue.png" id="icon-dolar" />DOLAR BLUE
+            <img src="{% static 'homebanking/icons/dolarBlue.png' %}" id="icon-dolar" />DOLAR BLUE
           </h5>
           <div class="card-body-dollar">
             <span class="navbar-text header-navigation me-3">
@@ -196,7 +202,7 @@
 
         <div class="card">
           <h5 class="card-title-dollar">
-            <img src="assets/icons/dolarCont.png" id="icon-dolar" />CONTADO
+            <img src="{% static 'homebanking/icons/dolarCont.png' %}" id="icon-dolar" />CONTADO
             CON LIQUI
           </h5>
           <div class="card-body-dollar">
@@ -216,7 +222,7 @@
         <!-- Dollar Soja -->
         <div class="card">
           <h5 class="card-title-dollar">
-            <img src="assets/icons/dolarProm.png" id="icon-dolar" />DOLAR SOJA
+            <img src="{% static 'homebanking/icons/dolarProm.png' %}" id="icon-dolar" />DOLAR SOJA
           </h5>
           <div class="card-body-dollar">
             <span class="navbar-text header-navigation me-3">
@@ -232,7 +238,7 @@
         <!-- Dollar MEP -->
         <div class="card">
           <h5 class="card-title-dollar">
-            <img src="assets/icons/dolarBolsa.png" id="icon-dolar" />DOLAR
+            <img src="{% static 'homebanking/icons/dolarBolsa.png' %}" id="icon-dolar" />DOLAR
             BOLSA
           </h5>
           <div class="card-body-dollar">
@@ -249,7 +255,7 @@
         <!-- Dollar Tourist-->
         <div class="card">
           <h5 class="card-title-dollar">
-            <img src="assets/icons/dolarTurista.png" id="icon-dolar" />DOLAR
+            <img src="{% static 'homebanking/icons/dolarTurista.png' %}" id="icon-dolar" />DOLAR
             TURISTA
           </h5>
           <div class="card-body-dollar">
@@ -275,7 +281,7 @@
             <div class="col-md-6 mb-2 px-5">
               <img
                 class="img-responsive img-fluid rounded"
-                src="assets/images/mobile-app.jpg"
+                src="{% static 'homebanking/images/mobile-app.jpg' %}"
               />
             </div>
             <div class="col mb-2 px-5">
@@ -327,7 +333,7 @@
           <div class="col-md-6 mb-2">
             <img
               class="img-responsive img-fluid rounded"
-              src="assets/images/to-infinity-and-beyond.jpg"
+              src="{% static 'homebanking/images/to-infinity-and-beyond.jpg' %}"
             />
           </div>
         </div>
@@ -340,7 +346,7 @@
               <img
                 class="img-responsive img-fluid rounded"
                 style="max-height: 50vh"
-                src="assets/images/clay-banks-POzx_amnWJw-unsplash.jpg"
+                src="{% static 'homebanking/images/clay-banks-POzx_amnWJw-unsplash.jpg' %}"
               />
             </div>
             <div class="col mb-2 px-5">
@@ -382,7 +388,7 @@
                 data-mdb-ripple-color="light"
               >
                 <img
-                  src="assets/images/family-savings.jpg"
+                  src="{% static 'homebanking/images/family-savings.jpg' %}"
                   class="img-fluid"
                 />
                 <a href="#!">
@@ -420,7 +426,7 @@
                 class="bg-image hover-overlay ripple"
                 data-mdb-ripple-color="light"
               >
-                <img src="assets/images/auto.jpg" class="img-fluid" />
+                <img src="{% static 'homebanking/images/auto.jpg' %}" class="img-fluid" />
                 <a href="#!">
                   <div
                     class="mask"
@@ -457,7 +463,7 @@
                 class="bg-image hover-overlay ripple"
                 data-mdb-ripple-color="light"
               >
-                <img src="assets/images/students.jpeg" class="img-fluid" />
+                <img src="{% static 'homebanking/images/students.jpeg' %}" class="img-fluid" />
                 <a href="#!">
                   <div
                     class="mask"
@@ -554,7 +560,7 @@
 {% endblock %}
 
 <!-- MDB -->
-<script type="text/javascript" src={% static "homebanking/js/mdb.min.js" %}></script>
+<script type="text/javascript" src="{% static 'homebanking/js/mdb.min.js' %}"></script>
 <!-- Custom JS -->
 {% block JS %}{% endblock %}
 </body>
