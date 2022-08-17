@@ -9,6 +9,6 @@ def index(request: WSGIRequest) -> HttpResponse:
     """
     View function for Me Page of site.
     """
-    template_name: str = 'homebanking/index.html'
+    template_name: str = 'base.html'
     context: dict = {}
     return render(request, template_name, context)
