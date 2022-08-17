@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}Me{% endblock %}
+
+{% block body-tag %}
+    style="height: 100vh;"
+    class="d-flex flex-column"
+{% endblock %}
+
+{% block header %}
+    {% include 'cliente/includes/navbar.html' %}
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-2 col-xl-2 px-sm-2 px-0 bg-light d-none d-lg-block ">
+                <div class="navbar-light d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 vh-100 ">
+                    <ul class="navbar-nav fs-4 flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+                        <!-- Home -->
+                        <li class="nav-item">
+                            <a href="{% url 'me' %}" class="nav-link active align-middle px-0">
+                                <i class="fa-solid fa-house-user"></i>
+                                <p class="ms-1 d-none d-sm-inline">Home</p>
+                            </a>
+                        </li>
+                        <!-- Accounts -->
+                        <li class="mt-4 fs-6">
+                            <hr/>
+                            <p>Accounts</p>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fa-solid fa-piggy-bank"></i>
+                                <p class="ms-1 d-none d-sm-inline">Accounts</p>
+                            </a>
+                        </li>
+                        <!-- Cards -->
+                        <li class="mt-4 fs-6">
+                            <hr/>
+                            <p>Cards</p>
+                        </li>
+                        <li class="nav-item dropdown mb-2">
+                            <a
+                                    class="nav-link"
+                                    href="#"
+                                    id="cards-dropdown"
+                                    role="button"
+                                    data-mdb-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                                <i class="fa-solid fa-wallet"></i>
+                                <p class="ms-1 d-none d-sm-inline">Cards</p>
+                            </a>
+                            <!-- Dropdown menu -->
+                            <ul class="dropdown-menu fs-5" aria-labelledby="cards-dropdown">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa-solid fa-credit-card"></i>
+                                        <p class="ms-1 d-none d-sm-inline">Cards</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa-solid fa-plane-departure"></i>
+                                        <p class="ms-1 d-none d-sm-inline">Enable for Travel</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa-solid fa-circle-xmark"></i>
+                                        <p class="ms-1 d-none d-sm-inline">Report Lost</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <p class="ms-1 d-none d-sm-inline">Banelco Password</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider"/>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa-solid fa-child-reaching"></i>
+                                        <p class="ms-1 d-none d-sm-inline">Debit Card for Kids</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Transactions -->
+                        <li class="mt-4 fs-6">
+                            <hr/>
+                            <p>Transactions</p>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fa-solid fa-money-bill-transfer"></i>
+                                <p class="ms-1 d-none d-sm-inline">Transfers</p>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <p class="ms-1 d-none d-sm-inline">Pay Services</p>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fa-solid fa-money-check"></i>
+                                <p class="ms-1 d-none d-sm-inline">e-Check</p>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                                <p class="ms-1 d-none d-sm-inline">Buy/Sell Dollars</p>
+                            </a>
+                        </li>
+                        <!-- Transactions -->
+                        <li class="mt-4 fs-6">
+                            <hr/>
+                            <p>Loans</p>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                                <p class="ms-1 d-none d-sm-inline">Loans</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col py-3">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
