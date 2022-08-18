@@ -33,19 +33,17 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="collapsableMenu">
                 <!-- Left links -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-lg-none">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-lg-none fs-5">
                     <!-- Home -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'me' %}">
-                            <i class="fa-solid fa-house-user"></i>
-                            <p class="ms-1 d-none d-sm-inline">Home</p>
+                        <a class="nav-link active align-middle px-0" href="{% url 'me' %}">
+                            <p class="ms-1 d-block"><i class="fa-solid fa-house-user me-2"></i>Home</p>
                         </a>
                     </li>
                     <!-- Accounts -->
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0">
-                            <i class="fa-solid fa-piggy-bank"></i>
-                            <p class="ms-1 d-none d-sm-inline">Accounts</p>
+                            <p class="ms-1 d-sm-inline"><i class="fa-solid fa-piggy-bank me-2"></i>Accounts</p>
                         </a>
                     </li>
                     <!-- Cards -->
@@ -58,33 +56,38 @@
                                 data-mdb-toggle="dropdown"
                                 aria-expanded="false"
                         >
-                            <i class="fa-solid fa-wallet"></i>
-                            <p class="ms-1 d-none d-sm-inline">Cards</p>
+                            <p class="ms-1 d-sm-inline"><i class="fa-solid fa-wallet me-2"></i>Cards</p>
                         </a>
                         <!-- Dropdown menu -->
                         <ul class="dropdown-menu" aria-labelledby="cards-dropdown">
                             <li>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-credit-card"></i>
-                                    <p class="ms-1 d-none d-sm-inline">Cards</p>
+
+                                    <p class="ms-1 d-sm-inline"><i class="fa-solid fa-credit-card me-1"></i>Cards</p>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-plane-departure"></i>
-                                    <p class="ms-1 d-none d-sm-inline">Enable for Travel</p>
+                                    <p class="ms-1  d-sm-inline">
+                                        <i class="fa-solid fa-plane-departure me-1"></i>
+                                        Enable for Travel
+                                    </p>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-circle-xmark"></i>
-                                    <p class="ms-1 d-none d-sm-inline">Report Lost</p>
+                                    <p class="ms-1 d-sm-inline">
+                                        <i class="fa-solid fa-circle-xmark me-1"></i>
+                                        Report Lost
+                                    </p>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-lock"></i>
-                                    <p class="ms-1 d-none d-sm-inline">Banelco Password</p>
+                                    <p class="ms-1 d-sm-inline">
+                                        <i class="fa-solid fa-lock me-1"></i>
+                                        Banelco Password
+                                    </p>
                                 </a>
                             </li>
                             <li>
@@ -92,8 +95,10 @@
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-child-reaching"></i>
-                                    <p class="ms-1 d-none d-sm-inline">Debit Card for Kids</p>
+                                    <p class="ms-1 d-sm-inline">
+                                        <i class="fa-solid fa-child-reaching me-1"></i>
+                                        Debit Card for Kids
+                                    </p>
                                 </a>
                             </li>
                         </ul>
@@ -101,15 +106,19 @@
                     <!-- Transactions -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            <p class="ms-1 d-none d-sm-inline">Transactions</p>
+                            <p class="ms-1 d-sm-inline">
+                                <i class="fa-solid fa-arrow-right-arrow-left me-2"></i>
+                                Transactions
+                            </p>
                         </a>
                     </li>
                     <!-- Loans -->
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0">
-                            <i class="fa-solid fa-hand-holding-dollar"></i>
-                            <p class="ms-1 d-none d-sm-inline">Loans</p>
+                            <p class="ms-1 d-sm-inline">
+                                <i class="fa-solid fa-hand-holding-dollar me-2"></i>
+                                Loans
+                            </p>
                         </a>
                     </li>
                 </ul>
