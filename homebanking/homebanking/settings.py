@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cliente',
     'login',
+    'prestamos',
 ]
 
 MIDDLEWARE = [
