@@ -14,7 +14,7 @@
                 <!-- Account -->
                 <div class="card bg-light text-start">
                     <div class="card-body">
-                        <h5 class="card-title">{{ account.iban }}</h5>
+                        <h5 class="card-title">{{ account.iban }} {{ styles.us_account }}</h5>
                         <h6 class="card-subtitle my-2 text-muted text-end">
                             Show/Hide Balance
                             <i id="showPasswordIcon"
@@ -30,11 +30,22 @@
                                     type="password"
                                     name="balance"
                                     id="balance-display"
-                                    class="form-control-plaintext form-control-lg  fs-4 mt-0"
-                                    value="ARS {{ styles.account_balance }}"
+                                    class="form-control-plaintext form-control-lg fs-4 mt-0"
+                                    value="{{ styles.account_balance }}"
                                     readonly
                                     disabled
                             />
+                            {% if  styles.us_balance %}
+                                <input
+                                        type="password"
+                                        name="balance"
+                                        id="balance-us-display"
+                                        class="form-control-plaintext form-control-lg fs-4 mt-0"
+                                        value="{{ styles.us_balance }}"
+                                        readonly
+                                        disabled
+                                />
+                            {% endif %}
                         </div>
                         <a href="#" class="card-link">See Movements</a>
                         <a href="#" class="card-link text-no-break">Consult Alias</a>
@@ -116,11 +127,13 @@
     <script>
         onShowBalance = () => {
             let passwordInput = document.getElementById("balance-display"),
+                usBalanceInput = document.getElementById("balance-us-display"),
                 showPasswordIcon = document.getElementById("showPasswordIcon");
 
             const isShown = passwordInput.getAttribute("type") === "text";
 
             passwordInput.setAttribute("type", isShown ? "password" : "text");
+            usBalanceInput?.setAttribute("type", isShown ? "password" : "text");
 
             showPasswordIcon.classList.remove(isShown ? "fa-eye-slash" : "fa-eye");
             showPasswordIcon.classList.add(isShown ? "fa-eye" : "fa-eye-slash");

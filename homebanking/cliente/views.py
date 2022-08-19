@@ -21,9 +21,15 @@ def index(request: WSGIRequest) -> HttpResponse:
     costumer = Cliente.objects.get(user=user)
     main_account = Cuenta.objects.get(customer=user, type=Cuenta.AccountType.SAVINGS.value)
 
+    try:
+        us_account = Cuenta.objects.get(customer=user, type=Cuenta.AccountType.SAVINGS_USD.value)
+    except Cuenta.DoesNotExist:
+        us_account = None
+
     navbar: str = "navbar-light bg-light"
     navbar_text: str = ""
     log_out: str = "text-dark"
+
     if costumer.type == Cliente.CustomerType.GOLD.value:
         navbar = "navbar-light bg-gold"
         navbar_text = "Golden"
@@ -38,6 +44,10 @@ def index(request: WSGIRequest) -> HttpResponse:
         "log_out": log_out,
         "account_balance": locale.currency(main_account.balance, grouping=True)
     }
+
+    if us_account is not None:
+        styles["us_balance"] = "US" + locale.currency(us_account.balance, grouping=True)
+        styles["us_account"] = f"/ {us_account.iban}"
 
     context: dict = {
         "user": user,
