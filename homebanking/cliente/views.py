@@ -30,14 +30,6 @@ def index(request: WSGIRequest) -> HttpResponse:
     navbar_text: str = ""
     log_out: str = "text-dark"
 
-    if costumer.type == Cliente.CustomerType.GOLD.value:
-        navbar = "navbar-light bg-gold"
-        navbar_text = "Golden"
-    elif costumer.type == Cliente.CustomerType.BLACK.value:
-        navbar = "navbar-dark bg-dark"
-        navbar_text = "Prestigious"
-        log_out = "text-white"
-
     styles: dict = {
         "navbar": navbar,
         "navbar_text": navbar_text,
@@ -55,4 +47,17 @@ def index(request: WSGIRequest) -> HttpResponse:
         "account": main_account,
         "styles": styles,
     }
+
+    fill_navbar_style(styles, costumer)
+
     return render(request, template_name, context)
+
+
+def fill_navbar_style(styles: dict, customer: Cliente):
+    if customer.type == Cliente.CustomerType.GOLD.value:
+        styles['navbar'] = "navbar-light bg-gold"
+        styles['navbar_text'] = "Premier"
+    elif customer.type == Cliente.CustomerType.BLACK.value:
+        styles['navbar'] = "navbar-dark bg-dark"
+        styles['navbar_text'] = "Prestigious"
+        styles['log_out'] = "text-white"
