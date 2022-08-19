@@ -17,7 +17,6 @@ def index(request: WSGIRequest) -> HttpResponse:
     template_name: str = 'login/index.html'
     context: dict = {}
     if request.method == 'POST':
-
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
