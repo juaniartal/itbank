@@ -9,6 +9,39 @@
             <div class="container-fluid text-center my-4">
                 <h3> Hello {{ user.first_name }} {{ user.last_name }}!</h3>
             </div>
+            <div class="container text-center my-4">
+
+                <!-- Account -->
+                <div class="card bg-light text-start">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ account.iban }}</h5>
+                        <h6 class="card-subtitle my-2 text-muted text-end">
+                            Show/Hide Balance
+                            <i id="showPasswordIcon"
+                               class="fas fa-eye mx-2"
+                               aria-hidden="true"
+                               type="button"
+                               onclick="onShowBalance()">
+                            </i>
+                        </h6>
+                        <div class="form-outline mb-2">
+                            <label class="form-label my-0" for="balance-display">Balance</label>
+                            <input
+                                    type="password"
+                                    name="balance"
+                                    id="balance-display"
+                                    class="form-control-plaintext form-control-lg  fs-4 mt-0"
+                                    value="ARS {{ styles.account_balance }}"
+                                    readonly
+                                    disabled
+                            />
+                        </div>
+                        <a href="#" class="card-link">See Movements</a>
+                        <a href="#" class="card-link text-no-break">Consult Alias</a>
+                    </div>
+                </div>
+
+            </div>
         </section>
         <!-- Main Account -->
         <!-- Bank Explorer -->
@@ -66,4 +99,20 @@
         </section>
         <!-- More Options -->
     </main>
+{% endblock %}
+
+{% block JS %}
+    <script>
+        onShowBalance = () => {
+            let passwordInput = document.getElementById("balance-display"),
+                showPasswordIcon = document.getElementById("showPasswordIcon");
+
+            const isShown = passwordInput.getAttribute("type") === "text";
+
+            passwordInput.setAttribute("type", isShown ? "password" : "text");
+
+            showPasswordIcon.classList.remove(isShown ? "fa-eye-slash" : "fa-eye");
+            showPasswordIcon.classList.add(isShown ? "fa-eye" : "fa-eye-slash");
+        };
+    </script>
 {% endblock %}

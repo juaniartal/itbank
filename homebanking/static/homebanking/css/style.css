@@ -1,20 +1,25 @@
 /* Background colors ========================================================================== */
+
 .bg-blue {
-  background-color: #0A456C;
-  color: whitesmoke;
+    background-color: #0A456C;
+    color: whitesmoke;
 }
 
 .bg-green {
-  background: #0c9e5a;
-  color: whitesmoke;
+    background: #0c9e5a;
+    color: whitesmoke;
 }
 
 .bg-white {
-  background: whitesmoke;
-  color: black;
+    background: whitesmoke;
+    color: black;
 }
 
 .bg-gray {
-  background: #585858;
-  color: whitesmoke;
+    background: #585858;
+    color: whitesmoke;
+}
+
+.bg-gold {
+    background: #EEE8AA;
 }

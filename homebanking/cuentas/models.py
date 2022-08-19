@@ -54,7 +54,7 @@ def populate_iban(sender, instance, created, **kwargs):
 def create_account_for_costumer(sender, instance, created, **kwargs):
     if created:
         customer = instance.user
-        account = Cuenta(customer=customer, type=Cuenta.AccountType.SAVINGS.value)
+        account = Cuenta(id=str(uuid.uuid4().int)[:10], customer=customer, type=Cuenta.AccountType.SAVINGS.value)
         account.save()
         match instance.type:
             case instance.CustomerType.GOLD:
