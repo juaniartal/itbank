@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 from cliente.models import Cliente
@@ -13,18 +15,19 @@ class Prestamo(models.Model):
         PLEDGE = 'PL', 'Pledge'
 
     id = models.IntegerField(primary_key=True, editable=False)
-    customer_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     type = models.CharField(
         max_length=2,
         choices=LoanType.choices)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateField(default=datetime.now)
     total = models.FloatField()
+    cancelled = models.FloatField(default=0.0)
 
     class Meta:
         db_table = 'PRESTAMOS'
 
     def __str__(self):
-        return f"{self.customer_id.user.username}: ${self.total} | {self.date.date()} ({self.get_type_display()})"
+        return f"{self.customer.user.username}: ${self.total} | {self.date} ({self.get_type_display()})"
 
     @staticmethod
     def get_max_loan(costumer: Cliente) -> float:

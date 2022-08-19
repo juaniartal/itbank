@@ -1,4 +1,5 @@
 import locale
+from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.core.handlers.wsgi import WSGIRequest
@@ -7,6 +8,8 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from cliente.models import Cliente
+from cliente.views import fill_navbar_style
+from cuentas.models import Cuenta
 from .models import Prestamo
 
 
@@ -19,6 +22,8 @@ def index(request: WSGIRequest) -> HttpResponse:
     customer = Cliente.objects.get(user=user)
     max_loan = Prestamo.get_max_loan(customer)
     loan_types = []
+    styles: dict = {}
+
     for loan_type in Prestamo.LoanType.choices:
         loan_types.append({'value': loan_type[0], 'label': loan_type[1]})
 
@@ -27,11 +32,35 @@ def index(request: WSGIRequest) -> HttpResponse:
                      'max_loan': max_loan,
                      'loan_currency': locale.currency(max_loan, grouping=True),
                      'loan_types': loan_types,
+                     'styles': styles,
                      }
     template_name: str = 'prestamos/prestamos.html'
+
+    fill_navbar_style(styles, customer)
+
     return render(request, template_name=template_name, context=context)
 
 
 @login_required()
 def new_loan(request: WSGIRequest) -> HttpResponse:
-    return redirect('loans')
+    # Retrieve User details
+    user = request.user
+    customer = Cliente.objects.get(user=user)
+
+    # Create new Loan
+    loan_type = request.POST['type']
+    loan_amount = float(request.POST['amount'])
+
+    if loan_amount > Prestamo.get_max_loan(customer):
+        return redirect('loans')
+
+    date = datetime.strptime(request.POST['date'], '%Y-%m-%d')
+    loan = Prestamo(customer=customer, type=loan_type, total=loan_amount, date=date)
+    loan.save()
+
+    # Update account balance
+    account = Cuenta.objects.get(customer=user, type=Cuenta.AccountType.SAVINGS.value)
+    account.balance += loan_amount
+    account.save()
+
+    return redirect('me')

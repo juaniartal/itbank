@@ -3,10 +3,10 @@
 {% block content %}
     <main>
         <section>
-            <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-center">
                 <div
                         id="card"
-                        class="card container p-3 mx-auto bg-light"
+                        class="card container p-3 mx-auto bg-light my-auto mx-auto"
                         style="max-width: max-content"
                 >
                     <div class="card-body text-center">
@@ -23,6 +23,19 @@
                         <div class="card-text">
                             <form class="mt-0" method="POST">
                                 {% csrf_token %}
+
+                                <div class="form-outline mb-4">
+                                    <input
+                                            type="date"
+                                            id="datePicker"
+                                            class="form-control {% if error %} is-invalid{% endif %} "
+                                            name="date"
+                                            placeholder="mm/dd/yyyy"
+                                            required
+                                    />
+                                    <label class="form-label" for="amountInput">Date</label>
+                                </div>
+
                                 <!-- Amount Input -->
                                 <div class="form-outline mb-4">
                                     <input
@@ -31,7 +44,8 @@
                                             class="form-control {% if error %} is-invalid{% endif %} "
                                             name="amount"
                                             placeholder="{{ loan_currency }}"
-                                            min="0.01"
+                                            min="0.0"
+                                            step="any"
                                             max="{{ max_loan }}"
                                             required
                                     />
@@ -39,8 +53,13 @@
                                     <div class="invalid-feedback">{{ error }}</div>
                                 </div>
 
-                                <div class="form-outline form-white mb-5">
-                                    <select class="form-select" required aria-label="Select">
+                                <!-- Loan Type Select -->
+                                <div class="form-outline mb-5">
+                                    <select class="form-select"
+                                            name="type"
+                                            aria-label="Select"
+                                            required
+                                    >
                                         {% for loan_type in loan_types %}
                                             <option value="{{ loan_type.value }}">{{ loan_type.label }}</option>
                                         {% endfor %}
@@ -62,4 +81,22 @@
             </div>
         </section>
     </main>
+{% endblock %}
+
+{% block JS %}
+    <script>
+
+        initDatePicker = () => {
+            let datePicker = document.getElementById('datePicker'),
+                today = new Date();
+            datePicker.valueAsDate = today;
+            datePicker.min = today.toLocaleDateString('en-ca');
+        }
+
+        (function onInit() {
+            initDatePicker();
+        })();
+
+
+    </script>
 {% endblock %}
