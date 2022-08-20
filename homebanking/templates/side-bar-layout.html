@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Me{% endblock %}
+
+{% block body-tag %}
+    style="height: 100vh;"
+    class="d-flex flex-column"
+{% endblock %}
+
+{% block header %}
+    {% include 'includes/homebanking-nav.html' %}
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-2 col-xl-2 px-sm-2 px-0 bg-light d-none d-lg-block ">
+                {% block side-bar %}
+                    {% include 'includes/homebanking-side-bar.html' %}
+                {% endblock %}
+            </div>
+            <div class="col py-3">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
