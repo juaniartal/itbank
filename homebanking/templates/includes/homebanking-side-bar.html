@@ -1,5 +1,6 @@
 {% url 'me' as me_url %}
 {% url 'loans' as loans_url %}
+{% url 'my-accounts' as accounts_url %}
 
 <div class="navbar-light d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 vh-100 ">
     <ul class="navbar-nav fs-5 flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
@@ -18,7 +19,8 @@
             <p>Accounts</p>
         </li>
         <li class="nav-item mb-2">
-            <a href="#" class="nav-link align-middle px-0">
+            <a href="{{ accounts_url }}"
+               class="nav-link align-middle px-0 {% if request.path == accounts_url %} active {% endif %}">
                 <i class="fa-solid fa-piggy-bank"></i>
                 <p class="ms-1 d-none d-sm-inline">Accounts</p>
             </a>

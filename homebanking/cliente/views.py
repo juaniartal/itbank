@@ -53,11 +53,13 @@ def index(request: WSGIRequest) -> HttpResponse:
     return render(request, template_name, context)
 
 
-def fill_navbar_style(styles: dict, customer: Cliente):
-    if customer.type == Cliente.CustomerType.GOLD.value:
-        styles['navbar'] = "navbar-light bg-gold"
-        styles['navbar_text'] = "Premier"
-    elif customer.type == Cliente.CustomerType.BLACK.value:
-        styles['navbar'] = "navbar-dark bg-dark"
-        styles['navbar_text'] = "Prestigious"
-        styles['log_out'] = "text-white"
+def fill_navbar_style(styles: dict = {}, customer: Cliente = None) -> dict:
+    if customer is not None:
+        if customer.type == Cliente.CustomerType.GOLD.value:
+            styles['navbar'] = "navbar-light bg-gold"
+            styles['navbar_text'] = "Premier"
+        elif customer.type == Cliente.CustomerType.BLACK.value:
+            styles['navbar'] = "navbar-dark bg-dark"
+            styles['navbar_text'] = "Prestigious"
+            styles['log_out'] = "text-white"
+    return styles

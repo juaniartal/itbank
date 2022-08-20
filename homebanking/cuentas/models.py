@@ -1,3 +1,4 @@
+import locale
 import uuid
 
 from django.contrib.auth.models import User
@@ -46,6 +47,16 @@ class Cuenta(models.Model):
 
     def __str__(self):
         return f"{self.iban} - {self.customer.username}'s {self.get_type_display()}"
+
+    def balance_currency(self) -> str:
+        """
+            Return the balance of the account in a string format.
+        """
+        locale.setlocale(locale.LC_ALL, 'es_AR.UTF-8')
+        if self.type == Cuenta.AccountType.SAVINGS_USD.value:
+            return f"US{locale.currency(self.balance, grouping=True)}"
+        else:
+            return locale.currency(self.balance, grouping=True)
 
 
 @receiver(post_save, sender=Cuenta)
