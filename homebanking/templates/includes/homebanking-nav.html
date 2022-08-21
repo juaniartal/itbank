@@ -1,5 +1,7 @@
 {% url 'me' as me_url %}
 {% url 'loans' as loans_url %}
+{% url 'my-accounts' as accounts_url %}
+{% url 'my-cards' as cards_url %}
 
 <!-- Header -->
 <header class="sticky-top">
@@ -47,14 +49,15 @@
                     </li>
                     <!-- Accounts -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="{{ accounts_url }}"
+                           class="nav-link align-middle px-0  {% if request.path == accounts_url %} active {% endif %}">
                             <p class="ms-1 d-sm-inline"><i class="fa-solid fa-piggy-bank me-2"></i>Accounts</p>
                         </a>
                     </li>
                     <!-- Cards -->
                     <li class="nav-item dropdown">
                         <a
-                                class="nav-link"
+                                class="nav-link {% if cards_url in request.path %} active {% endif %}"
                                 href="#"
                                 id="cards-dropdown"
                                 role="button"
@@ -66,7 +69,7 @@
                         <!-- Dropdown menu -->
                         <ul class="dropdown-menu" aria-labelledby="cards-dropdown">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ cards_url }}">
 
                                     <p class="ms-1 d-sm-inline"><i class="fa-solid fa-credit-card me-1"></i>Cards</p>
                                 </a>

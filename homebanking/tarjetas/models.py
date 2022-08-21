@@ -55,7 +55,8 @@ class Tarjeta(models.Model):
             return f"{self.number[:4]} {self.number[4:8]} {self.number[8:12]} {self.number[12:]}"
 
     def logo(self):
-        return self.brand.lower() + ".png"
+        ext = "svg"
+        return self.brand.lower() + f".{ext}"
 
     def display_expiration(self):
         return datetime.date.strftime(self.expiration_end, '%m/%y')

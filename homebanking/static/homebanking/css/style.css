@@ -23,3 +23,8 @@
 .bg-gold {
     background: #EEE8AA;
 }
+
+
+.svg-white {
+    filter: invert(100%) sepia(4%) saturate(8%) hue-rotate(341deg) brightness(107%) contrast(100%);
+}

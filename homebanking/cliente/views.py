@@ -57,6 +57,13 @@ def index(request: WSGIRequest) -> HttpResponse:
 
 
 def fill_navbar_style(styles: dict = {}, customer: Cliente = None) -> dict:
+    """
+    Fill the navbar style with the customer's type.
+    """
+    styles['navbar'] = "navbar-light bg-body"
+    styles['log_out'] = "text-dark"
+    styles['cards_color'] = "bg-light"
+
     if customer is not None:
         if customer.type == Cliente.CustomerType.GOLD.value:
             styles['navbar'] = "navbar-light bg-gold"
@@ -67,4 +74,5 @@ def fill_navbar_style(styles: dict = {}, customer: Cliente = None) -> dict:
             styles['navbar_text'] = "Prestigious"
             styles['log_out'] = "text-white"
             styles['cards_color'] = "bg-dark text-white"
+            styles['card_svg'] = "svg-white"
     return styles

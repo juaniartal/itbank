@@ -119,12 +119,12 @@
                                             <img
                                                     src="{% static 'homebanking/icons/' %}{{ card.logo }}"
                                                     alt="{{ card.get_brand_display }} Logo"
-                                                    style="width: 45px; height: 45px"
-                                                    class="rounded img-fluid"
+                                                    style="width: 55px; height: 55px"
+                                                    class="rounded {{ styles.card_svg }}"
                                             />
                                             <div class="ms-3">
-                                                <p class="fw-bold mb-1 text-start">{{ card.get_brand_display }}</p>
-                                                <p class="text-muted mb-0">{{ card }}</p>
+                                                <p class="fw-bold mb-1 text-start user-select-none">{{ card.get_brand_display }}</p>
+                                                <p class="text-muted mb-0 user-select-none">{{ card }}</p>
                                             </div>
                                         </div>
                                     </div>
