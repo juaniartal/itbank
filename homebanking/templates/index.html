@@ -139,13 +139,13 @@
                               mx-auto"
                     >
                         <li class="page-item d-table-cell">
-                            <a class="page-link" href="#">
+                            <a class="page-link" href="{% url 'register' %}">
                                 <h4><i class="fa-solid fa-wallet"></i></h4>
                                 <h5>Open an Account</h5>
                             </a>
                         </li>
                         <li class="page-item d-table-cell">
-                            <a class="page-link" href="#">
+                            <a class="page-link" href="{% url 'my-cards' %}">
                                 <h4><i class="fa-solid fa-credit-card"></i></h4>
                                 <h5>Get a Card</h5>
                             </a>
@@ -163,7 +163,7 @@
                             </a>
                         </li>
                         <li class="page-item d-table-cell">
-                            <a class="page-link" href="#">
+                            <a class="page-link" href="{% url 'loans' %}">
                                 <h4><i class="fa-solid fa-hand-holding-dollar"></i></h4>
                                 <h5>Loans</h5>
                             </a>
@@ -175,7 +175,7 @@
                             </a>
                         </li>
                         <li class="page-item d-table-cell">
-                            <a class="page-link" href="#">
+                            <a class="page-link" href="{% url 'loans' %}">
                                 <h4><i class="fa-solid fa-house-chimney-user"></i></h4>
                                 <h5>Mortgages</h5>
                             </a>
@@ -214,7 +214,8 @@
                                 money with ease.
                             </p>
                             <a
-                                    type="submit"
+                                    role="button"
+                                    href="{% url 'me' %}"
                                     class="btn btn-success btn-lg bg-green mt-2"
                                     id="btn-signup"
                             >
