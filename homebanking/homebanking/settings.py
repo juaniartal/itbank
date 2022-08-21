@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'prestamos',
     'cuentas',
     'tarjetas',
+    'branches',
 ]
 
 MIDDLEWARE = [

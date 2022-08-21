@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from branches.models import Branch, Address
+
 
 # Create your models here.
 class Cliente(models.Model):
@@ -22,8 +24,8 @@ class Cliente(models.Model):
     )
     dni = models.IntegerField(null=True)
     dob = models.CharField(max_length=200, null=True)
-    branch_id = models.IntegerField(null=True)
-    direccion_id = models.IntegerField(null=True)
+    branch = models.ForeignKey(Branch, on_delete=models.SET_NULL, default=None, null=True)
+    address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True, default=None)
 
     class Meta:
         db_table = 'CLIENTES'
