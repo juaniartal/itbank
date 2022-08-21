@@ -32,13 +32,11 @@ SECRET_KEY = 'django-insecure-r5^&ys5_937e^e3n-bv)zym^w8j5hv0#li5ojq47+2ap(!_$h7
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['127.0.0.1', "localhost", "0.0.0.0", '192.168.0.3', '192.168.68.61']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IS_HEROKU:
     DEBUG = True
-
-ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -53,6 +51,7 @@ INSTALLED_APPS = [
     'login',
     'prestamos',
     'cuentas',
+    'tarjetas',
 ]
 
 MIDDLEWARE = [

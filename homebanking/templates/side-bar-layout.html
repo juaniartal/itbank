@@ -22,6 +22,30 @@
             <div class="col py-5 justify-content-center">
                 {% block content %}
                 {% endblock %}
+                {% block messages %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div id="alert"
+                                 class="alert
+                                        {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                                         alert-primary
+                                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                                         alert-warning
+                                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                                         alert-success
+                                        {% else %}
+                                         alert-danger
+                                        {% endif %}
+                                        alert-dismissible fade show
+                                         w-50 mx-auto text-center
+                                         justify-content-center align-content-center
+                                        "
+                                 role="alert">
+                                <p class="text-center mx-auto">{{ message }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endblock %}
             </div>
         </div>
     </div>

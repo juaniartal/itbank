@@ -1,6 +1,7 @@
 {% url 'me' as me_url %}
 {% url 'loans' as loans_url %}
 {% url 'my-accounts' as accounts_url %}
+{% url 'my-cards' as cards_url %}
 
 <div class="navbar-light d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 vh-100 ">
     <ul class="navbar-nav fs-5 flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
@@ -32,7 +33,7 @@
         </li>
         <li class="nav-item dropdown mb-2">
             <a
-                    class="nav-link"
+                    class="nav-link {% if cards_url in request.path %} active {% endif %}"
                     href="#"
                     id="cards-dropdown"
                     role="button"
@@ -45,7 +46,7 @@
             <!-- Dropdown menu -->
             <ul class="dropdown-menu fs-5" aria-labelledby="cards-dropdown">
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{ cards_url }}">
                         <i class="fa-solid fa-credit-card"></i>
                         <p class="ms-1 d-none d-sm-inline">Cards</p>
                     </a>

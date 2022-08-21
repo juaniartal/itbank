@@ -1,6 +1,7 @@
 import locale
 from datetime import datetime
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
@@ -52,6 +53,7 @@ def new_loan(request: WSGIRequest) -> HttpResponse:
     loan_amount = float(request.POST['amount'])
 
     if loan_amount > Prestamo.get_max_loan(customer):
+        messages.error(request, 'Loan exceeds maximum amount')
         return redirect('loans')
 
     date = datetime.strptime(request.POST['date'], '%Y-%m-%d')
@@ -62,5 +64,7 @@ def new_loan(request: WSGIRequest) -> HttpResponse:
     account = Cuenta.objects.get(customer=user, type=Cuenta.AccountType.SAVINGS.value)
     account.balance += loan_amount
     account.save()
+
+    messages.success(request, 'Loan granted.')
 
     return redirect('me')

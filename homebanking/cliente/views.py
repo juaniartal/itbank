@@ -7,6 +7,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from cuentas.models import Cuenta
+from tarjetas.models import Tarjeta
 from .models import Cliente
 
 
@@ -20,6 +21,7 @@ def index(request: WSGIRequest) -> HttpResponse:
     user = request.user
     costumer = Cliente.objects.get(user=user)
     main_account = Cuenta.objects.get(customer=user, type=Cuenta.AccountType.SAVINGS.value)
+    credit_cards = Tarjeta.objects.filter(customer=user, type=Tarjeta.CardType.CREDIT.value)
 
     try:
         us_account = Cuenta.objects.get(customer=user, type=Cuenta.AccountType.SAVINGS_USD.value)
@@ -46,6 +48,7 @@ def index(request: WSGIRequest) -> HttpResponse:
         "costumer": costumer,
         "account": main_account,
         "styles": styles,
+        'cards': credit_cards,
     }
 
     fill_navbar_style(styles, costumer)
@@ -58,8 +61,10 @@ def fill_navbar_style(styles: dict = {}, customer: Cliente = None) -> dict:
         if customer.type == Cliente.CustomerType.GOLD.value:
             styles['navbar'] = "navbar-light bg-gold"
             styles['navbar_text'] = "Premier"
+            styles['cards_color'] = "bg-gold text-dark"
         elif customer.type == Cliente.CustomerType.BLACK.value:
             styles['navbar'] = "navbar-dark bg-dark"
             styles['navbar_text'] = "Prestigious"
             styles['log_out'] = "text-white"
+            styles['cards_color'] = "bg-dark text-white"
     return styles
