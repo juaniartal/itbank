@@ -53,9 +53,16 @@
                                                         <p class="mb-2 lead d-none user-select-all"
                                                            id="{{ card.id }}-show">{{ card.display_number }}
                                                         </p>
-                                                        <label class="fw-lighter float-end me-5 user-select-none"
+                                                        <label class="float-end user-select-none"
                                                                for="{{ card.id }}-cvv">
-                                                            {{ card.display_expiration }}
+                                                            <span class="small text-muted">Valid End:</span>
+                                                            <span class="fw-lighter me-5"
+                                                                  id="{{ card.id }}-expiration-hidden">
+                                                                --/--
+                                                            </span>
+                                                            <span class="fw-lighter me-3 d-none"
+                                                                  id="{{ card.id }}-expiration-shown">{{ card.display_expiration }}
+                                                            </span>
                                                         </label>
                                                         <input class="form-control-plaintext form-control-lg
                                                                         fs-6 mt-0 me-auto
@@ -98,7 +105,9 @@
         onDetails = (id) => {
             let card_number_private = document.getElementById(`${id}-hide`),
                 card_cvv = document.getElementById(`${id}-cvv`),
-                card_number = document.getElementById(`${id}-show`);
+                card_number = document.getElementById(`${id}-show`),
+                expiration_shown = document.getElementById(`${id}-expiration-shown`),
+                expiration_hidden = document.getElementById(`${id}-expiration-hidden`);
 
             const isShown = card_cvv.getAttribute("type") === "text";
 
@@ -106,10 +115,14 @@
                 card_cvv.setAttribute("type", "password");
                 card_number.classList.add("d-none");
                 card_number_private.classList.remove("d-none");
+                expiration_hidden.classList.remove("d-none");
+                expiration_shown.classList.add("d-none");
             } else {
                 card_cvv.setAttribute("type", "text");
                 card_number.classList.remove("d-none")
                 card_number_private.classList.add("d-none")
+                expiration_hidden.classList.add("d-none");
+                expiration_shown.classList.remove("d-none");
             }
         }
     </script>
