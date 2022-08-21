@@ -3,6 +3,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from cliente.models import Cliente
 # Create your views here.
 from .forms import RegisterForm
 
@@ -21,11 +22,15 @@ def index(request: WSGIRequest) -> HttpResponse:
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            nxt = request.GET.get("next", 'me')
-            login(request, user)
-            return redirect(nxt)
+            try:
+                Cliente.objects.get(user=user)
+                nxt = request.GET.get("next", 'me')
+                login(request, user)
+                return redirect(nxt)
+            except Cliente.DoesNotExist:
+                context['error'] = 'User not authorized'
         else:
-            context: dict = {'error': 'Invalid username or password'}
+            context['error'] = 'Invalid username or password'
 
     return render(request, template_name, context)
 
