@@ -78,7 +78,7 @@ class Cuenta(models.Model):
                           max_length=10,
                           editable=False,
                           null=False, )
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     type = models.CharField(
         max_length=3,
         choices=AccountType.choices,
@@ -125,7 +125,7 @@ class Tarjeta(models.Model):
         AMEX = 'AMEX', "American Express"
 
     id = models.IntegerField(primary_key=True, editable=False)
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     type = models.CharField(
         max_length=1,
         choices=CardType.choices,
