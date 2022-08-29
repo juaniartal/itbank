@@ -1,8 +1,14 @@
-from pickle import PERSID
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView 
+from rest_framework import permissions
+from rest_framework import status
+from base.models import *
+from .serializers import *
 
-@api_view(['GET'])
-def getData(requestt):
-    person = {'name': 'Dennis'}
-    return Response(person)
+class Tarjetas(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    def get(self, request, idCliente):
+        tarjeta = Tarjeta.objects.filter(pk=idCliente)
+        serializer = TarjetaSerializer(tarjeta, many=True, context={'request': request}) 
+        return Response(serializer.data, status=status.HTTP_200_OK)    
