@@ -6,7 +6,7 @@ class ClienteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Cliente
         fields = '__all__'
-        read_only_fields = ("id",)
+        read_only_fields = ("id")
 
 
 class ClienteTipoSerializer(serializers.HyperlinkedModelSerializer):
@@ -67,3 +67,11 @@ class TipoTarjetaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tarjeta.CardType
         fields = '__all__'        
+
+
+class EmpleadoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Employee
+        fields = '__all__'        
+
+                
