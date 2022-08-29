@@ -9,6 +9,6 @@ from .serializers import *
 class Tarjetas(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     def get(self, request, idCliente):
-        tarjeta = Tarjeta.objects.filter(pk=idCliente)
+        tarjeta = Tarjeta.objects.filter(customer_id=idCliente)
         serializer = TarjetaSerializer(tarjeta, many=True, context={'request': request}) 
         return Response(serializer.data, status=status.HTTP_200_OK)    
