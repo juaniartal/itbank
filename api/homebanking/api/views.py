@@ -12,3 +12,10 @@ class Tarjetas(APIView):
         tarjeta = Tarjeta.objects.filter(customer_id=cliente_id).order_by('id')
         serializer = TarjetaSerializer(tarjeta, many=True, context={'request': request}) 
         return Response(serializer.data, status=status.HTTP_200_OK)    
+
+class Clientes(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    def get(self, request, cliente_id):
+        cliente = Cliente.objects.filter(id=cliente_id)
+        serializer = ClienteSerializer(cliente, many=True, context={'request': request}) 
+        return Response(serializer.data, status=status.HTTP_200_OK)    
