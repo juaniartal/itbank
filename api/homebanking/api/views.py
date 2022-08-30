@@ -26,6 +26,16 @@ class Prestamos(APIView):
         serializer = PrestamoSerializer(prestamo, many=True, context={'request': request}) 
         return Response(serializer.data, status=status.HTTP_200_OK)                    
 
+class PrestamosSucursal(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    def get(self, request, branch_id):
+        prestamos = []
+        clientes = Cliente.objects.filter(branch_id = branch_id).order_by('id')
+        for cliente in clientes:
+            prestamos += Prestamo.objects.filter(customer_id = cliente)
+        serializer = PrestamoSerializer(prestamos, many=True, context={'request': request}) 
+        return Response(serializer.data, status=status.HTTP_200_OK)                    
+
 class Tarjetas(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     def get(self, request, cliente_id):
