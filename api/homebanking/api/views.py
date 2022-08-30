@@ -42,3 +42,10 @@ class Tarjetas(APIView):
         tarjeta = Tarjeta.objects.filter(customer_id=cliente_id).order_by('id')
         serializer = TarjetaSerializer(tarjeta, many=True, context={'request': request}) 
         return Response(serializer.data, status=status.HTTP_200_OK)    
+
+class Sucursales(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    def get(self, request):
+        sucursales = Branch.objects.all().order_by('id')
+        serializer = SucursalSerializer(sucursales, many=True, context={'request': request}) 
+        return Response(serializer.data, status=status.HTTP_200_OK)                    
