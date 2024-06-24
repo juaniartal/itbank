@@ -1,0 +1,20 @@
+/* Background colors ========================================================================== */
+.bg-blue {
+  background-color: #0A456C;
+  color: whitesmoke;
+}
+
+.bg-green {
+  background: #0c9e5a;
+  color: whitesmoke;
+}
+
+.bg-white {
+  background: whitesmoke;
+  color: black;
+}
+
+.bg-gray {
+  background: #585858;
+  color: whitesmoke;
+}
